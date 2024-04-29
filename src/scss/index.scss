@@ -1,6 +1,3 @@
-@use './variables' as *; // испорт всего чо есть в variables.scss
-
-body {
- background-color: $color-bg;
-
-}
+@use 'base';
+@use 'fonts';
+@import 'normalize.css'

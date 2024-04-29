@@ -1,0 +1,7 @@
+@use './variables' as *; // импорт всего чо есть в variables.scss
+
+
+
+body {
+  font-family: $font-family;
+}
