@@ -1,0 +1,6 @@
+@use './variables' as *; // испорт всего чо есть в variables.scss
+
+body {
+ background-color: $color-bg;
+
+}
