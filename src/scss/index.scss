@@ -1,3 +1,7 @@
 @use 'base';
 @use 'fonts';
-@import 'normalize.css'
+@use './modules/header';
+@use './modules/hero';
+
+
+@import 'normalize.css';

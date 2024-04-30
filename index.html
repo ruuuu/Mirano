@@ -20,10 +20,10 @@
 
 <body>
   <header class="header">
-    <div class="container">
+    <div class="container header__container">
       <form class="header__form">
         <input class="header__input" type="search" name="search" placeholder="Букет из роз">
-        <button class="header__seach-button">
+        <button class="header__search-button">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M13.3333 4.16663C13.3333 4.78496 13.9442 5.70829 14.5625 6.48329C15.3575 7.48329 16.3075 8.35579 17.3967 9.02163C18.2133 9.52079 19.2033 9.99996 20 9.99996M20 9.99996C19.2033 9.99996 18.2125 10.4791 17.3967 10.9783C16.3075 11.645 15.3575 12.5175 14.5625 13.5158C13.9442 14.2916 13.3333 15.2166 13.3333 15.8333M20 9.99996H4.76837e-07"
@@ -35,7 +35,7 @@
       <img class="header__logo" width="200" height="65" src="/img/logo.svg"
         alt="Логотип магазина букетов Mirano"><!-- отсчет от папки public -->
 
-      <button class="header-cart-btn">
+      <button class="header__cart-btn">
         0
       </button>
     </div>
@@ -50,16 +50,20 @@
         </div>
 
         <figure>
-          <img src="" alt="">
-          <svg width="680" height="588" viewBox="0 0 680 588" fill="none" xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M680 112.187C680 137.954 653.568 161.688 609.146 180.61C653.568 211.682 680 250.658 680 292.973C680 335.869 652.836 375.335 607.304 406.613C652.836 425.66 680 449.692 680 475.813C680 537.649 527.777 587.776 340 587.776C152.223 587.776 0 537.649 0 475.813C0 449.692 27.1636 425.66 72.6961 406.613C27.1636 375.335 0 335.869 0 292.973C0 250.658 26.4319 211.682 70.854 180.61C26.4319 161.688 0 137.954 0 112.187C0 50.3515 152.223 0.223633 340 0.223633C527.777 0.223633 680 50.3515 680 112.187Z"
-              fill="#D9D9D9" />
+          <img src="/img/flower1.jpg" width="284" height="352" alt="Букет маков">
+
+          <svg role="img" aria-label="розовые розы и пионы" width="680" height="588" viewBox="0 0 680 588" fill="none"
+            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <!--Добавили aria-label и role="img". Для очищения лишних элементов у svg, используем https://svgomg.net/   -->
+            <clippath id="hero">
+              <path
+                d="M680 112.187C680 137.954 653.568 161.688 609.146 180.61C653.568 211.682 680 250.658 680 292.973C680 335.869 652.836 375.335 607.304 406.613C652.836 425.66 680 449.692 680 475.813C680 537.649 527.777 587.776 340 587.776C152.223 587.776 0 537.649 0 475.813C0 449.692 27.1636 425.66 72.6961 406.613C27.1636 375.335 0 335.869 0 292.973C0 250.658 26.4319 211.682 70.854 180.61C26.4319 161.688 0 137.954 0 112.187C0 50.3515 152.223 0.223633 340 0.223633C527.777 0.223633 680 50.3515 680 112.187Z"
+                fill="#D9D9D9" />
+            </clippath>
             <image xlink:href="/img/flower-center.jpg" width="100%" height="100%" clip-path="url(#hero)" />
           </svg>
 
-          <img src="" alt="">
+          <img src="/img/flower2.jpg" width="284" height="352" alt="Букет пионов">
         </figure>
       </div>
     </section>
