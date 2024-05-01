@@ -1,0 +1,56 @@
+@use '../variables' as *;
+
+// https://codepen.io/Quper/pen/ZEywPZo
+
+.filter {
+  padding: 30px 0;
+
+  &__group {
+    border: none;
+    padding: 0;
+  }
+
+  &__radio {
+    position: absolute;
+    appearance: none;
+
+    &:focus+.filter__label {
+      background-color: $orange;
+      color: $white;
+    }
+
+    &:checked+.filter__label {
+      background-color: $light-orange;
+      color: $white;
+    }
+
+  }
+
+  &__label {
+    display: inline-block;
+    padding: 16px;
+    padding-left: 60px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    border-radius: 300px;
+    background-color: $white;
+    font-family: $font-family;
+    font-weight: 400;
+    line-height: 1.3;
+    color: $dark;
+
+    &:hover {
+      background-color: $light-orange;
+    }
+  }
+
+
+  // .filter__radio:focus+.filter__label {
+  //   background-color: $light-orange;
+  // }
+
+  // .filter__radio:checked+.filter__label {
+  //   background-color: red;
+  //   color: $white;
+  // }
+}
