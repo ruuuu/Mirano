@@ -54,14 +54,15 @@
 
           <svg class="hero__image hero__image--center" role="img" aria-label="розовые розы и пионы" width="680"
             height="588" viewBox="0 0 680 588" fill="none" xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink">
+            xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid slice">
+            <!-- preserveAspectRatio="xMidYMid slice" типа background-size: cover -->
             <!-- Добавили aria-label и role="img". Для очищения лишних элементов у svg, используем https://svgomg.net/   -->
             <clippath id="hero">
               <path
                 d="M680 112.187C680 137.954 653.568 161.688 609.146 180.61C653.568 211.682 680 250.658 680 292.973C680 335.869 652.836 375.335 607.304 406.613C652.836 425.66 680 449.692 680 475.813C680 537.649 527.777 587.776 340 587.776C152.223 587.776 0 537.649 0 475.813C0 449.692 27.1636 425.66 72.6961 406.613C27.1636 375.335 0 335.869 0 292.973C0 250.658 26.4319 211.682 70.854 180.61C26.4319 161.688 0 137.954 0 112.187C0 50.3515 152.223 0.223633 340 0.223633C527.777 0.223633 680 50.3515 680 112.187Z"
                 fill="#D9D9D9" />
             </clippath>
-            <image xlink:href="/img/flower-center.jpg" clip-path="url(#hero)" />
+            <image xlink:href="/img/flower-center.jpg" clip-path="url(#hero)" preserveAspectRatio="xMidYMid slice" />
           </svg>
 
           <img class="hero__image hero__image--right" src="/img/flower2.jpg" width="284" height="352"
@@ -71,16 +72,22 @@
     </section>
 
     <section class="filter">
+      <h2 class="visually-hidden">Фильтр</h2>
       <div class="container filter__container">
         <fieldset class="filter__group">
-          <input class="filter__radio" type="radio" name="test" id="item1">
-          <label class="filter__label" for="item1">Цветы</label>
+          <input class="filter__input" type="radio" name="type" id="flower" value="flower">
+          <label class="filter__label" for="flower">Цветы</label>
 
-          <input class="filter__radio" type="radio" name="test" id="item2" checked>
-          <label class="filter__label" for="item2">Игрушки</label>
+          <input class="filter__input" type="radio" name="type" id="toys" value="toys" checked>
+          <label class="filter__label" for="toys">Игрушки</label>
 
-          <input class="filter__radio" type="radio" id="item3" name="test">
-          <label class="filter__label" for="item3">Открытки</label>
+          <input class="filter__input" type="radio" name="type" id="postcard" value="postcard">
+          <label class="filter__label" for="postcard">Открытки</label>
+        </fieldset>
+
+
+        <fieldset class="filter__group filter__group--choices">
+
         </fieldset>
       </div>
     </section>
