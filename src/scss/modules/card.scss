@@ -1,0 +1,65 @@
+@use '../variables' as *;
+
+.card {
+  min-height: 531px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 32px;
+  background-color: $white;
+
+  &__image {
+    object-fit: cover;
+    width: 100%;
+    height: 359px;
+  }
+
+  &__content {
+    padding: 24px 16px;
+    flex-grow: 1;
+
+    display: grid;
+    grid-template-rows: 1fr min-content; // 1-ая строка по максимуму будет занимать, 2-ая по размеру контента
+    grid-template-columns: max-content 1fr;
+    gap: 16px 30px;
+  }
+
+  &__title {
+    // грид элемент
+    align-self: start; // выравнивание по вертикали
+    grid-column: 1 / -1;
+    font-weight: 400;
+    font-size: 18px;
+    color: $dark;
+  }
+
+  &__date-delivery {
+    // грид элемент
+    padding-left: 20px;
+    background-image: url('/img/track.svg');
+    background-repeat: no-repeat;
+    font-family: $font-family;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.3;
+    color: $dark;
+  }
+
+  &__button {
+    // грид элемент
+    justify-self: end; // выравнивание по горизонтали
+    border-radius: 32px;
+    padding: 8px 16px;
+    width: 120px;
+    height: 39px;
+    background-color: $light-orange;
+    font-weight: 400;
+    color: $white;
+  }
+
+  &__price {}
+
+  &__button-text {
+    display: none;
+  }
+}
