@@ -21,6 +21,11 @@
     text-transform: uppercase;
     text-align: center;
     color: $green;
+
+    @include tablet {
+      margin-bottom: 24px;
+      font-size: 32px;
+    }
   }
 
   &__form {
