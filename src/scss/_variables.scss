@@ -10,3 +10,10 @@ $pattern: #f4f8eb;
 
 $font-family: "Inter", sans-serif;
 $second-family: "Playfair Display", sans-serif;
+
+@mixin responsive-font-size($min-size, $max-size, $min-screen, $max-screen) {
+  //миксин
+  font-size: clamp(#{$min-size}px, calc(#{$min-size}px + (#{$max-size - $min-size} * (100vw - #{$min-screen}px) / (#{$max-screen - $min-screen}))), #{$max-size}px); // на <= 1024px будет font-size:32px, на > 1440px будет font-size:40px
+
+
+}

@@ -1,15 +1,36 @@
 @use '../variables' as *;
+@use '../media' as *;
+
 
 .header {
 
-  padding: 0 32px;
+  padding: 32px 0;
 
-  //background-color: $bg;
+  @include mobile {
+    padding: 24px 0;
+  }
+
   &__container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     gap: 30px;
+
+    @include tablet {
+      grid-template-areas:
+        '.    logo cart'
+        'form form form'
+      ;
+      gap: 32px 0;
+    }
+
+    @include mobile {
+      grid-template-areas:
+        'logo logo cart'
+        'form form form'
+      ;
+      gap: 24px 0;
+    }
   }
 
   &__form {
@@ -17,6 +38,19 @@
     max-width: 420px;
     width: 100%;
     height: 40px;
+
+    @include laptop {
+      max-width: 302px;
+    }
+
+    @include tablet {
+      max-width: 100%;
+      grid-area: form;
+
+    }
+
+    @include mobile {}
+
   }
 
   &__input {
@@ -53,7 +87,17 @@
 
   &__logo {
     // грид элемент
-    justify-self: center;
+    justify-self: center; // выравнивание по горизонтали
+    width: 200px;
+
+    @include tablet {
+      grid-area: logo;
+    }
+
+    @include mobile {
+      width: 140px;
+      justify-self: start;
+    }
   }
 
   &__cart-btn {
@@ -75,6 +119,11 @@
     line-height: 1.3;
     text-align: center;
     color: $orange;
+
+
+    @include tablet {
+      grid-area: cart;
+    }
 
   }
 }

@@ -6,7 +6,7 @@
   background-image: url('/img/figure.svg');
   background-repeat: no-repeat;
   background-position: bottom;
-  background-size: contain;
+  background-size: 100%; // contain
 
   &__container {
     display: flex;
