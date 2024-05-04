@@ -5,6 +5,14 @@
 .hero {
   padding: 60px 0;
 
+  @include tablet {
+    padding: 40px 0;
+  }
+
+  @include mobile {
+    padding: 40px 0 73px;
+  }
+
   &__head-group {
     margin-bottom: 24px;
     font-family: $second-family;

@@ -18,14 +18,11 @@
 
   &__group {
     display: flex;
+    flex-wrap: wrap;
     gap: 12px;
-    border: none;
     padding: 0;
     margin: 0;
-
-    @include mobile {
-      flex-wrap: wrap;
-    }
+    border: none;
   }
 
 

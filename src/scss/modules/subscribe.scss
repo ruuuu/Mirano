@@ -1,9 +1,14 @@
 @use '../variables' as *;
+@use '../media' as *;
 
 
 .subscribe {
   padding-top: 70px;
   padding-bottom: 140px;
+
+  @include tablet {
+    padding: 60px 0 100px;
+  }
 
   &__container {}
 

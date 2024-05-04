@@ -1,4 +1,6 @@
 @use '../variables' as *;
+@use '../media' as *;
+
 
 .card {
   min-height: 531px;
@@ -9,35 +11,68 @@
   overflow: hidden;
   background-color: $white;
 
+  @include mobile {
+    min-height: 380px;
+    border-radius: 20px;
+  }
+
   &__image {
     object-fit: cover;
     width: 100%;
     height: 359px;
+
+    @include mobile {
+      height: 180px;
+    }
   }
 
   &__content {
+    display: flex;
+    flex-direction: column;
     padding: 24px 16px;
     flex-grow: 1;
-
-    display: grid;
-    grid-template-rows: 1fr min-content; // 1-ая строка по максимуму будет занимать, 2-ая по размеру контента
-    grid-template-columns: max-content 1fr;
-    justify-content: space-between;
     gap: 16px;
+
+    // display: grid;
+    // grid-template-rows: 1fr min-content; // 1-ая строка по максимуму будет занимать, 2-ая по размеру контента
+    // grid-template-columns: max-content 1fr;
+    // justify-content: space-between;
+
+
+    @include mobile {
+      padding: 16px 12px;
+      gap: 12px;
+    }
+
   }
 
   &__title {
-    // грид элемент
-    align-self: start; // выравнивание по вертикали
-    grid-column: 1 / -1;
+    // флекс элемент
+    flex-grow: 1;
+    //align-self: start; // выравнивание по вертикали
+    //grid-column: 1 / -1;
     font-weight: 400;
     font-size: 18px;
     color: $dark;
+
+    @include mobile {
+      font-size: 14px;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+    }
   }
 
   &__date-delivery {
-    // грид элемент
-    align-self: center; // выравнивание по вертикали
     padding-left: 20px;
     background-image: url('/img/track.svg');
     background-repeat: no-repeat;
@@ -46,15 +81,18 @@
     font-size: 14px;
     line-height: 1.3;
     color: $dark;
+
+    @include mobile {
+      font-size: 12px;
+    }
   }
 
   &__button {
-    // грид элемент
-    justify-self: end; // выравнивание по горизонтали
-    align-self: start; // выравнивание по вертикали
 
-    padding: 8px 16px;
+    // justify-self: end; // выравнивание по горизонтали
+    // align-self: start; // выравнивание по вертикали
     min-width: 120px;
+    padding: 8px 16px;
     background-color: $light-orange;
     color: $white;
     border-radius: 32px;
