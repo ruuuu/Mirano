@@ -9,7 +9,12 @@
     padding: 40px 0;
   }
 
-  &__container {}
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+  }
 
   &__title {
     margin-bottom: 40px;

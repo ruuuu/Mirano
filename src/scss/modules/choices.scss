@@ -4,6 +4,12 @@
 
   &__box {
     display: none;
+
+    &--open {
+      display: block;
+    }
   }
+
+
 
 }
