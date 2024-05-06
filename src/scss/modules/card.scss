@@ -98,7 +98,9 @@
     border-radius: 32px;
   }
 
-  &__price {}
+  &__price {
+    white-space: nowrap; // чтобы букву Р не отделяллась от цены
+  }
 
   &__button-text {
     display: none;
