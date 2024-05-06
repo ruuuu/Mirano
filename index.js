@@ -55,32 +55,35 @@ const adjustElementPosition = (elem, count = 0) => {
 
 const choices = document.querySelectorAll('.choices');
 
-
 choices.forEach((choice, i) => {
   const btn = choice.querySelector('.choices__btn');
   const box = choice.querySelector('.choices__box');
 
-  btn.addEventListener('click', (i) => {
+  btn.addEventListener('click', () => {
 
     box.classList.toggle('choices__box--open');
-    
-    
     
     adjustElementPosition(box);
 
     window.addEventListener('resize', () => { 
       //console.log('поьзователь меняет размер окна')
       adjustElementPosition(box);
-     });
+    });
   });
 
 });
+
+
+
 
 
 const btns = document.querySelectorAll('.choices__btn');
 
 const box0 = choices[0].querySelector('.choices__box');
 const box1 = choices[1].querySelector('.choices__box');
+
+
+
 
 btns[0].addEventListener('click', () => {
 
