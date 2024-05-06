@@ -159,10 +159,16 @@
   &__type-item {}
 
 
-  &__type-btn {}
-
-
-  &__type-button {
+  &__type-btn {
+    padding: 16px;
+    font-size: 14px;
+    color: $dark;
+    line-height: 1.3;
     white-space: nowrap;
+
+    &:hover {
+      color: $light-orange;
+    }
   }
+
 }
