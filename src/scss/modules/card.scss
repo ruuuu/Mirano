@@ -88,7 +88,6 @@
   }
 
   &__button {
-
     // justify-self: end; // выравнивание по горизонтали
     // align-self: start; // выравнивание по вертикали
     min-width: 120px;
@@ -96,6 +95,14 @@
     background-color: $light-orange;
     color: $white;
     border-radius: 32px;
+
+    &:hover {
+      background-color: $orange;
+    }
+
+    &:active {
+      background-color: $orange;
+    }
   }
 
   &__price {
