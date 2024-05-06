@@ -29,7 +29,13 @@
     color: $dark;
   }
 
-  &__close {}
+  &__close svg {
+    fill: #D17D2F;
+
+    &:hover {
+      fill: green;
+    }
+  }
 
   &__date-delivery {
     margin-bottom: 32px;
