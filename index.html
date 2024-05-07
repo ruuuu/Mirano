@@ -96,7 +96,7 @@
 
           <div class="filter__choices choices">
             <button class="filter__select choices__btn"> Тип товара </button>
-            <div class="choices__box filter__choices-box">
+            <div class="choices__box filter__choices-box filter__choices-box--type">
               <ul class="filter__type-list">
                 <li class="filter__type-item">
                   <button class="filter__type-btn"> Монобукеты </button>
@@ -246,6 +246,7 @@
               <button class="cart__close">
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect x="5" y="5.70715" width="1" height="25" transform="rotate(-45 5 5.70715)" fill="currentColor" />
+                  <!-- задали fill: currentColor чтоы управлять цвтом в scss -->
                   <rect x="22.6777" y="5" width="1" height="25" transform="rotate(45 22.6777 5)" fill="currentColor" />
                 </svg>
               </button>
@@ -259,7 +260,7 @@
                 <h4 class="cart__item-title"> Авторский букет из роз, диантусов и сухоцветов </h4>
                 <div class="cart__counter">
                   <button> + </button>
-                  <input class="cart__counter-input" type="number">
+                  <input class="cart__counter-input" type="number" max="99" min="0">
                   <button> - </button>
                 </div>
                 <p class="cart__price"> 3000&nbsp;₽ </p>

@@ -55,13 +55,22 @@ const adjustElementPosition = (elem, count = 0) => {
 
 const choices = document.querySelectorAll('.choices');
 
-choices.forEach((choice, i) => {
+choices.forEach((choice) => {
   const btn = choice.querySelector('.choices__btn');
   const box = choice.querySelector('.choices__box');
 
   btn.addEventListener('click', () => {
 
     box.classList.toggle('choices__box--open');
+
+    choices.forEach((otherChoice) => {
+      if (otherChoice !== choice){
+        if(otherChoice.querySelector('.choices__box').classList.contains('choices__box--open')){
+          otherChoice.querySelector('.choices__box').classList.remove('choices__box--open')
+        }
+      }
+      
+    })
     
     adjustElementPosition(box);
 
@@ -77,26 +86,26 @@ choices.forEach((choice, i) => {
 
 
 
-const btns = document.querySelectorAll('.choices__btn');
+// const btns = document.querySelectorAll('.choices__btn');
 
-const box0 = choices[0].querySelector('.choices__box');
-const box1 = choices[1].querySelector('.choices__box');
-
-
+// const box0 = choices[0].querySelector('.choices__box');
+// const box1 = choices[1].querySelector('.choices__box');
 
 
-btns[0].addEventListener('click', () => {
-
-  if(box1.classList.contains('choices__box--open')){
-    box1.classList.remove('choices__box--open')
-  }
-});
 
 
-btns[1].addEventListener('click', () => {
+// btns[0].addEventListener('click', () => {
 
-  if(box0.classList.contains('choices__box--open')){
-    box0.classList.remove('choices__box--open')
-  }
+//   if(box1.classList.contains('choices__box--open')){
+//     box1.classList.remove('choices__box--open')
+//   }
+// });
 
-});
+
+// btns[1].addEventListener('click', () => {
+
+//   if(box0.classList.contains('choices__box--open')){
+//     box0.classList.remove('choices__box--open')
+//   }
+
+// });
