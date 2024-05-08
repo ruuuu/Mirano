@@ -3,14 +3,30 @@
 
 
 .cart {
-
   margin-top: 100px;
+  background-color: $white;
+  border-radius: 32px;
 
   //display: none;
   &--open {
     display: flex;
   }
 
+  @media (max-width: 1360px) {
+    padding: 0;
+    position: fixed;
+    top: 0; // считаем отheader
+    bottom: 0;
+    right: 0;
+    overflow-y: auto; // кога нужен будет появится скролл верикальный
+    z-index: 999;
+    height: 100vh;
+  }
+
+  @include mobile {
+    height: auto;
+    right: 14px;
+  }
 
   &__container {
     display: flex;
@@ -18,8 +34,16 @@
     max-width: 310px;
     min-height: 778px;
     padding: 24px 16px;
-    background-color: $white;
-    border-radius: 32px;
+
+
+    @media (max-width: 1360px) {
+      height: 100%;
+    }
+
+    @include mobile {
+      min-height: auto;
+      max-width: 292px;
+    }
   }
 
   &__header {
