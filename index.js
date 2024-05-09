@@ -84,6 +84,19 @@ choices.forEach((choice) => {
 
 
 
+const headerCartBtn = document.querySelector('.header__cart-btn')
+const cartClose = document.querySelector('.cart__close')
+const cart = document.querySelector('.cart')
+
+headerCartBtn.addEventListener('click', () => {
+  cart.classList.toggle('cart--open')
+});
+
+
+cartClose.addEventListener('click', () => {
+  cart.classList.remove('cart--open')
+});
+
 
 
 // const btns = document.querySelectorAll('.choices__btn');
