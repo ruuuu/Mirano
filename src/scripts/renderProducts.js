@@ -12,12 +12,9 @@ export const renderProducts = async () => {
   goodsList.innerHTML = '';
 
   products.forEach((product) => {
-    // const li = document.createElement('li');
-    // li.textContent = product.name;
-    // goodsList.append(li);
-
     const productCard = ProductCard(product);
-
+    goodsList.append(productCard);
   });
+
 
 }
