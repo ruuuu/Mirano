@@ -16,7 +16,7 @@ export const renderProducts = async () => {
     // li.textContent = product.name;
     // goodsList.append(li);
 
-    const producCard = ProductCard(product);
+    const productCard = ProductCard(product);
 
   });
 
