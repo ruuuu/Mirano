@@ -7,14 +7,22 @@ export const renderProducts = async () => {
 
   const goodsList = document.querySelector('.goods__list');
 
-  const products = await fetchProducts();
+  const updateList = () => {
+    const products = store.getProducts(); // вместо await fetchProducts();
+    goodsList.innerHTML = '';
 
-  goodsList.innerHTML = '';
+    products.forEach((product) => {
+      const productCard = ProductCard(product);
+      goodsList.append(productCard);
+    });
+  };
 
-  products.forEach((product) => {
-    const productCard = ProductCard(product);
-    goodsList.append(productCard);
-  });
+
+  store.subscribe(updateList)
+
+  
+
+  
 
 
 }

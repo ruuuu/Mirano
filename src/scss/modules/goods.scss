@@ -16,6 +16,11 @@
     gap: 20px;
   }
 
+  &__box {
+    max-width: 970px;
+    flex-grow: 1; // будет занимать стоько сколько вместится
+  }
+
   &__title {
     margin-bottom: 40px;
     font-family: $second-family;
@@ -36,7 +41,6 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, 310px);
     justify-content: center;
-    max-width: 970px;
     margin: 0 auto;
     gap: 24px 20px;
 
