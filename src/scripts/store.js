@@ -16,11 +16,11 @@ class Store{
   }
 
 
-  getProducts(){
-    return this.products;
+  getProducts(){  
+    return this.products; 
   }
 
-  setProducts(newProducts){ // обновляем списк продуктов
+  setProducts(newProducts){ // обновляем списк продуктов(добавляем новые товары)
     this.products = newProducts;
     this.notifyObservers();
   }
@@ -31,4 +31,4 @@ class Store{
 }
 
 
-const store = new Store(); // вызов класса
+export const store = new Store(); // создание объекта класса

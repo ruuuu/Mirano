@@ -1,8 +1,10 @@
 import '@/scss/index.scss';
-import {initHeaderFixer} from "@/scripts/headerFixer";
+import { initHeaderFixer } from "@/scripts/headerFixer";
 import { initChoices } from './scripts/choices.js';
 import { initCart } from './scripts/cart.js';
+import { fetchProducts } from './scripts/API.js';
 import { renderProducts } from './scripts/renderProducts.js';
+
 
 
 
@@ -11,6 +13,7 @@ const init = () => {
   initHeaderFixer();
   initChoices();
   initCart();
+  fetchProducts({ type: 'bouquets' });
   renderProducts();
 }
 
