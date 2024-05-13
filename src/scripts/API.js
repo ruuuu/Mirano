@@ -4,19 +4,19 @@ export const API_URL = 'http://localhost:3000';
 
 
 // формируем строку состоящу из search-парамтеров::
-const formatQueryString = (params) => {  // params = {}
+const formatQueryString = (params) => {  // params = { type: 'toys', minPrice: 1500 }
 
   if(Object.keys(params).length === 0){
     return '';  // выход из метода
   }
 
-  const searchParams = new URLSearchParams();  // пока пустой {}
+  const searchParams = new URLSearchParams();  // изначально  пустой {}
   Object.entries(params).forEach(([key, value]) => {   // перебираем  [ [key, value], [key, value] ]
     searchParams.append(key, value);              // добавляем пару в объект
   });
   
   
-  return `?${searchParams.toString()}`;
+  return `?${searchParams.toString()}`; // ?type=toys&minPrice=1500
 };
 
 
@@ -31,7 +31,9 @@ export const fetchProducts = async (params = {}) => {  // по умолчани�
       }
       const products = await response.json();     // [{} ,{}, {}]
       
-      store.setProducts(products);
+      console.log('products ',  products)
+      
+      store.setProducts(products);  // записали в store
       // return products;
   }
   catch(error){

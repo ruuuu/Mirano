@@ -1,5 +1,6 @@
 import { debounce } from "./debounce.js";
 
+// перемещение выпададюего списка Цеа и Тип товара:
 
 const adjustElementPosition = (elem, count = 0) => {
   const rect = elem.getBoundingClientRect(); // { bottom: , left: , width: , height: , right: , x: , y: }
@@ -47,7 +48,7 @@ export const initChoices = () => {
       choices.forEach((otherChoice) => {
         if (otherChoice !== choice){
           if(otherChoice.querySelector('.choices__box').classList.contains('choices__box--open')){
-          otherChoice.querySelector('.choices__box').classList.remove('choices__box--open');
+            otherChoice.querySelector('.choices__box').classList.remove('choices__box--open');
           }
         }
       });
@@ -57,11 +58,23 @@ export const initChoices = () => {
 
 
     window.addEventListener('resize', debounce(() => { 
-        adjustElementPosition(box);
+      adjustElementPosition(box);
       }),
     );
+
+
+    document.addEventListener('click', ({ target }) => {  // деструткрирвали объект события
+      let clickInside = target.closest('.choices'); // сам элемент или его потомок
+      console.log('clickInside ', clickInside)
+      
+      if(!clickInside){  // если клилкнули мимо clickInside
+        choices.forEach((choice) => {
+          choice.querySelector('.choices__box').classList.remove('choices__box--open')
+        })
+      }
+    });
+
     
-  
   });
 
 }

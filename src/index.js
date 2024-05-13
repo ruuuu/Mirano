@@ -4,6 +4,7 @@ import { initChoices } from './scripts/choices.js';
 import { initCart } from './scripts/cart.js';
 import { fetchProducts } from './scripts/API.js';
 import { renderProducts } from './scripts/renderProducts.js';
+import { initChoicesType } from './scripts/choicesType.js';
 
 
 
@@ -12,8 +13,20 @@ import { renderProducts } from './scripts/renderProducts.js';
 const init = () => {
   initHeaderFixer();
   initChoices();
+  initChoicesType();
   initCart();
-  fetchProducts({ type: 'bouquets' });
+  fetchProducts({ type: 'bouquets' });  // { type: 'toys', minPrice: 1500 }
+
+  // setTimeout(() => {
+  //     fetchProducts({ type: 'postcards' })
+  // }, 4000)
+
+  
+
+  // setTimeout(() => {
+  //   fetchProducts({ type: 'bouquets' })
+  // }, 8000)
+
   renderProducts();
 }
 

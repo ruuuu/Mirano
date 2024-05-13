@@ -5,7 +5,8 @@ import { API_URL } from "./API.js";
 
 
 export const ProductCard = (product) =>  (  // как в реакт 
- 
+    
+
     <li class="goods__item">
       <article class="goods__card card">
         <img class="card__image" src={`${API_URL}${product.photoUrl}`} alt={product.name} />

@@ -1,7 +1,7 @@
 
 const jsx = (tag, attributes = {}, ...children) => { // ...children - дочерние элементы, attributes = { class: '', src: '', alt: '' }
 
-  console.log('tag: ', tag, ', attributes: ', attributes, ', children: ', children );
+  //console.log('tag: ', tag, ', attributes: ', attributes, ', children: ', children );
 
   if(typeof tag === 'function'){  // если тэг это фукнция
     return tag(attributes, ...children);
@@ -10,7 +10,7 @@ const jsx = (tag, attributes = {}, ...children) => { // ...children - дочер
   const element = document.createElement(tag);
 
  
-  console.log(Object.entries(attributes))   // [ ['class' 'card__image',]  ['src', '/img/floer1.jpg'],  ['alt', 'Наименование'] ]
+  //console.log(Object.entries(attributes))   // [ ['class' 'card__image',]  ['src', '/img/floer1.jpg'],  ['alt', 'Наименование'] ]
   // перебираем объект:
   Object.entries(attributes).forEach(([key, value]) => {
     if(key === 'class'){
