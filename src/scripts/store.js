@@ -1,5 +1,6 @@
 class Store{
 
+  // паттерн- obsrver 
   constructor(){
     // нач значения
     this.observers = [];   // массив(наблюдателей) состоящий из фукнций ()=>{}
@@ -14,7 +15,7 @@ class Store{
 
   
   notifyObservers(){  // увдомляе наблюдателй об изменений this.observers
-    console.log('this ', this)  // 
+    // console.log('this ', this)  // 
     this.observers.forEach((observer) => observer()) 
   }
 

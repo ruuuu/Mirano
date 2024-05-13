@@ -72,52 +72,56 @@
 
     <section class="filter">
       <h2 class="visually-hidden"> Фильтр </h2>
-      <div class="container filter__container">
-        <fieldset class="filter__group">
-          <input class="filter__radio" type="radio" name="type" id="flower" value="flower">
-          <label class="filter__label filter__label--flower" for="flower"> Цветы </label>
+      <div class="container">
+        <form class="filter__form">
+          <fieldset class="filter__group">
+            <input class="filter__radio" type="radio" name="type" id="bouquets" value="bouquets">
+            <label class="filter__label filter__label--flower" for="bouquets"> Цветы </label>
 
-          <input class="filter__radio" type="radio" name="type" id="toys" value="toys" checked>
-          <label class="filter__label filter__label--toy" for="toys"> Игрушки </label>
+            <input class="filter__radio" type="radio" name="type" id="toys" value="toys" checked>
+            <label class="filter__label filter__label--toy" for="toys"> Игрушки </label>
 
-          <input class="filter__radio" type="radio" name="type" id="postcard" value="postcard">
-          <label class="filter__label filter__label--card" for="postcard"> Открытки </label>
-        </fieldset>
+            <input class="filter__radio" type="radio" name="type" id="postcards" value="postcards">
+            <label class="filter__label filter__label--card" for="postcards"> Открытки </label>
+          </fieldset>
 
-        <fieldset class="filter__group filter__group--choices">
-          <div class="filter__choices choices">
-            <button class="filter__select choices__btn"> Цена </button>
-            <div class="choices__box filter__choices-box">
-              <div class="filter__price">
-                <input class="filter__input-price" type="text" placeholder="От">
-                <input class="filter__input-price" type="text" placeholder="До">
+          <fieldset class="filter__group filter__group--choices">
+            <div class="filter__choices choices">
+              <button class="filter__select choices__btn" type="button"> Цена </button>
+              <!-- без type="button" будет рабать как type="submit"и будет перезгрузка станицы -->
+              <div class="choices__box filter__choices-box">
+                <div class="filter__price">
+                  <input class="filter__input-price" type="text" placeholder="От">
+                  <input class="filter__input-price" type="text" placeholder="До">
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="filter__choices filter__choices--type choices">
-            <button class="filter__select choices__btn"> Тип товара </button>
-            <div class="choices__box filter__choices-box filter__choices-box--type">
-              <ul class="filter__type-list">
-                <li class="filter__type-item">
-                  <button class="filter__type-btn"> Монобукеты </button>
-                </li>
-                <li class="filter__type-item">
-                  <button class="filter__type-btn"> Авторские букеты </button>
-                </li>
-                <li class="filter__type-item">
-                  <button class="filter__type-btn"> Цветы в коробке </button>
-                </li>
-                <li class="filter__type-item">
-                  <button class="filter__type-btn"> Цветы в корзине </button>
-                </li>
-                <li class="filter__type-item">
-                  <button class="filter__type-btn"> Цветы из сухоцветов </button>
-                </li>
-              </ul>
+            <div class="filter__choices filter__choices--type choices">
+              <button class="filter__select choices__btn" type="button"> Тип товара </button>
+              <div class="choices__box filter__choices-box filter__choices-box--type">
+                <ul class="filter__type-list">
+                  <li class="filter__type-item">
+                    <button class="filter__type-btn" type="button"> Монобукеты </button>
+                  </li>
+                  <li class="filter__type-item">
+                    <button class="filter__type-btn" type="button"> Авторские букеты </button>
+                  </li>
+                  <li class="filter__type-item">
+                    <button class="filter__type-btn" type="button"> Цветы в коробке </button>
+                  </li>
+                  <li class="filter__type-item">
+                    <button class="filter__type-btn" type="button"> Цветы в корзине </button>
+                  </li>
+                  <li class="filter__type-item">
+                    <button class="filter__type-btn" type="button"> Цветы из сухоцветов </button>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
-        </fieldset>
+          </fieldset>
+        </form>
+
       </div>
     </section>
 

@@ -63,9 +63,9 @@ export const initChoices = () => {
     );
 
 
-    document.addEventListener('click', ({ target }) => {  // деструткрирвали объект события
+    document.addEventListener('click', ({ target }) => {  // деструткрирвали объект события evt
       let clickInside = target.closest('.choices'); // сам элемент или его потомок
-      console.log('clickInside ', clickInside)
+      // console.log('clickInside ', clickInside)
       
       if(!clickInside){  // если клилкнули мимо clickInside
         choices.forEach((choice) => {

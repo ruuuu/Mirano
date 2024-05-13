@@ -2,7 +2,7 @@ import { ProductCard } from "./ProductCard.jsx";
 import { store } from "./store.js";
 
 
-export const renderProducts = async () => {
+export const renderProducts =  () => {
 
   const goodsList = document.querySelector('.goods__list');
 
