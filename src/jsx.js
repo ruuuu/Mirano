@@ -31,7 +31,11 @@ const jsx = (tag, attributes = {}, ...children) => { // ...children - дочер
   children.forEach((child) => { 
     if(typeof child === 'string' || typeof child === 'number'){
       element.append(document.createTextNode(child.toString()))
-    } else{
+    } 
+    else if(Array.isArray(child)){  // если child это массив
+      child.forEach((innerChild) => element.append(innerChild));
+    }
+    else{
       element.append(child);
     }
   });

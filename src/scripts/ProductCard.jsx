@@ -4,7 +4,7 @@ import { API_URL } from "./API.js";
 
 
 
-export const ProductCard = (product) =>  (  // как в реакт 
+export const ProductCard = (product) =>  (  // как в реакт (компонент jsx)
     
     <li class="goods__item">
       <article class="goods__card card">

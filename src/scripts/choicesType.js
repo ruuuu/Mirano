@@ -1,42 +1,35 @@
 import { store } from "./store.js";
+import { ListType } from "./ListType.jsx";
+
 
 // фильтрация по типу товара:
 
 export const initChoicesType = () => {
 
   const typeChoices = document.querySelector('.filter__choices--type');
+  const choicesBox = document.querySelector('.filter__choices-box--type');
+
+ 
 
   const updateTypeChoicesVisibility = () => {
     
     const categories = store.getCategories(); // { 'Монобукеты', 'WoW Эффект', 'Авторские букеты', 'Букеты из сухоцветов', 'Цветы в коробке'}
 
-    console.log('categories from initChoicesType ', categories)
+    //console.log('categories from initChoicesType ', categories)
 
     if(categories.size){
-     
       typeChoices.style.display = '';
-      const filterTypeList = document.querySelector('.filter__type-list');
-      filterTypeList.innerHTML = '';
-      console.log('1')
+      choicesBox.textContent = '';
       
-      const products = store.getProducts();
-      store.updateCategories(products);
-      const newCategories = store.getCategories();
-      //console.log('newCategories in choiceType ', newCategories)
-
-      // newCategories.forEach((category) => {
-      //     const li = document.createElement('li');
-      //     li.classList.add('filter__type-item');
-      //     const button = document.createElement('button');
-      //     button.classList.add('filter__type-btn');
-      //     button.type = 'button';
-      //     button.textContent = category;
-
-      //     li.append(button);
-      //     filterTypeList.append(li);
-      //  });
-
+      const listType = ListType([...categories]); // компонент jsx. [...categories] превратили из коллекци в массив
+     // console.log('listType ', [...listType])
+      choicesBox.append(listType);
+    
+      // const products = store.getProducts();
+      // store.updateCategories(products);
+      // const newCategories = store.getCategories();
       
+      // console.log('newCategories in choiceType ', newCategories)
     }
     else{
       typeChoices.style.display = 'none';

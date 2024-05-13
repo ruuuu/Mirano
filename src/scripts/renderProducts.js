@@ -11,7 +11,7 @@ export const renderProducts =  () => {
     goodsList.innerHTML = '';
 
     products.forEach((product) => {
-      const productCard = ProductCard(product);
+      const productCard = ProductCard(product); // комопнент 
       goodsList.append(productCard);
     });
   };
