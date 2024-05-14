@@ -22,7 +22,7 @@ export const initChoicesType = () => {
       choicesBox.textContent = '';
       
       const listType = ListType([...categories]); // компонент jsx, [...categories] превратили из коллекци в массив
-      console.log('listType ', listType)
+      // console.log('listType ', listType)
       choicesBox.append(listType);
     }
     else{

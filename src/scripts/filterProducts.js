@@ -1,32 +1,61 @@
 import { fetchProducts } from "./API.js";
+import { debounce } from "./debounce.js";
 
 // фильтр по типу(Цветы, Игрушки, Открытки): 
-
-const filterType = (type) => { // передаем input
-  fetchProducts({ type: type.value });
-}
-
-
 
 export const filterProducts = () => {
 
   const filterForm = document.querySelector('.filter__form');
+  const goodsTitle = document.querySelector('.goods__title');
 
-  // change - событе происхоит когда теряет фокус
-  // filterForm.addEventListener('change', (evt) => {
+  const applyFilters = () => { 
+    const formData = new FormData(filterForm); // FormData -встроенный объект
+    const type = formData.get('type');
+    const minPrice = formData.get('minPrice'); // значнеие поля у котрого name="minPrice"
+    console.log('minPrice: ', minPrice)
+   
+    const maxPrice = formData.get('maxPrice');
+    console.log('maxPrice: ', maxPrice)
+    const params = {};
 
-  // })
+    if(type){
+      params.type = type;
+    }
 
-  filterForm.addEventListener('input', (evt) => {
-      const target = evt.target;
-      console.log('target ', target); // <input type="radio">
+    if(minPrice){
+      params.minPrice = minPrice;
+    }
 
-      console.log('filterForm.type: ', filterForm.type);          // [ input.#bouquets, input.#toys, input.#postcards ]
-      filterType(filterForm.type);            // обращаемся к input так: form.type, где type это значение атрибута name
+    if(maxPrice){
+      params.maxPrice = maxPrice;
+    }
 
-      if(target.name === 'type'){  // если нажали на радио input
-        filterType(filterForm.type);   // filterForm.type где name=type
-      }
+    console.log('params: ', params) // {type: 'toys', minPrice: '1500'}  {type: 'toys', maxPrice: '1700'}
+    fetchProducts(params);
+  }
+ 
+  applyFilters(); 
+
+  const applyPriceFilters = debounce(applyFilters, 500); // чтобы фильтр резко не срабатывал, фунуия вызывается через каждые 300ms. Снимаем нагрузку на сервер, запрос отправится тлоько когда перестанем вводить    
+
+ 
+
+  filterForm.addEventListener('input', (evt) => { // при каждом вводе в поле сработает событие
+    const target = evt.target;
+    // console.log('target ', target); // <input type="radio">
+
+    if(target.name === 'type'){  // если нажали на радио input
+      goodsTitle.textContent = target.labels[0].textContent;
+      filterForm.maxPrice.value = '';
+      filterForm.minPrice.value = '';
+      applyFilters();   
+      return; // выход
+    }
+
+
+    if(target.name === 'minPrice' || target.name === 'maxPrice'){  // если заполнили minPrice и maxPrice
+      applyPriceFilters();
+    }
   });
 
 };

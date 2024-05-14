@@ -19,10 +19,4 @@ export const renderProducts =  () => {
 
   store.subscribe(updateList);
   updateList(); // вызов в первый раз
-
-  
-
-  
-
-
 }
