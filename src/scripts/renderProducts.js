@@ -10,10 +10,20 @@ export const renderProducts =  () => {
     const products = store.getProducts(); // вместо await fetchProducts(), товары получаем уже не  с сервера,  а с хранилища
     goodsList.innerHTML = '';
 
-    products.forEach((product) => {
-      const productCard = ProductCard(product); // комопнент 
-      goodsList.append(productCard);
-    });
+    if(products.length === 0){
+        const messgeItem = document.createElement('li');
+        messgeItem.classList.add('goods__no-product');
+        messgeItem.textContent = 'Товары не найдены'; 
+        goodsList.append(messgeItem);
+    }
+    else{
+      products.forEach((product) => {
+        const productCard = ProductCard(product); // комопнент 
+        goodsList.append(productCard);
+      });
+    }
+
+    
   };
 
 

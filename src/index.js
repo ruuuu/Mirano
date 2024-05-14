@@ -6,7 +6,7 @@ import { fetchProducts } from './scripts/API.js';
 import { renderProducts } from './scripts/renderProducts.js';
 import { initChoicesType } from './scripts/choicesType.js';
 import { filterProducts } from './scripts/filterProducts.js';
-
+import { initSearchProducts } from './scripts/searchProducts.js';
 
 
 
@@ -15,9 +15,11 @@ const init = () => {
   initChoices();
   initChoicesType();
   initCart();
+  initSearchProducts();
   //fetchProducts({ type: 'bouquets' });  // { type: 'toys', minPrice: 1500 }
   filterProducts();
   renderProducts();
+  
 
   // setTimeout(() => {
   //     fetchProducts({ type: 'postcards' })

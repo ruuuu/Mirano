@@ -1,12 +1,18 @@
 import { fetchProducts } from "./API.js";
 import { debounce } from "./debounce.js";
+import { callbackWithPreload } from "./preload.js";
 
-// фильтр по типу(Цветы, Игрушки, Открытки): 
+
+
+
+// фильтр по типу(Цветы, Игрушки, Открытки) и фильтр по Цене: 
 
 export const filterProducts = () => {
 
   const filterForm = document.querySelector('.filter__form');
   const goodsTitle = document.querySelector('.goods__title');
+  const goodSection = document.querySelector('.goods');
+
 
   const applyFilters = () => { 
     const formData = new FormData(filterForm); // FormData -встроенный объект
@@ -31,7 +37,8 @@ export const filterProducts = () => {
     }
 
     console.log('params: ', params) // {type: 'toys', minPrice: '1500'}  {type: 'toys', maxPrice: '1700'}
-    fetchProducts(params);
+    // fetchProducts(params);
+    callbackWithPreload(goodSection, fetchProducts, params); // отбражение и скрытие прелоадера
   }
  
   applyFilters(); 
