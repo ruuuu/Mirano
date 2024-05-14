@@ -1,8 +1,8 @@
 import { fetchProducts } from "./API.js";
 
-// фильтр по типу: 
+// фильтр по типу(Цветы, Игрушки, Открытки): 
 
-const filterType = (type) => {
+const filterType = (type) => { // передаем input
   fetchProducts({ type: type.value });
 }
 
@@ -19,12 +19,12 @@ export const filterProducts = () => {
 
   filterForm.addEventListener('input', (evt) => {
       const target = evt.target;
-      console.log('target ', target);
+      console.log('target ', target); // <input type="radio">
 
-      filterType(filterForm.type);
+      console.log('filterForm.type: ', filterForm.type);          // [ input.#bouquets, input.#toys, input.#postcards ]
+      filterType(filterForm.type);            // обращаемся к input так: form.type, где type это значение атрибута name
 
       if(target.name === 'type'){  // если нажали на радио input
-        console.log('filterForm.type: ', filterForm.type);
         filterType(filterForm.type);   // filterForm.type где name=type
       }
   });

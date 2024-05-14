@@ -15,10 +15,9 @@ const init = () => {
   initChoices();
   initChoicesType();
   initCart();
-  // fetchProducts({ type: 'bouquets' });  // { type: 'toys', minPrice: 1500 }
+  fetchProducts({ type: 'bouquets' });  // { type: 'toys', minPrice: 1500 }
   filterProducts();
   renderProducts();
-
 
   // setTimeout(() => {
   //     fetchProducts({ type: 'postcards' })

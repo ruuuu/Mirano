@@ -21,15 +21,9 @@ export const initChoicesType = () => {
       typeChoices.style.display = '';
       choicesBox.textContent = '';
       
-      const listType = ListType([...categories]); // компонент jsx. [...categories] превратили из коллекци в массив
-     // console.log('listType ', [...listType])
+      const listType = ListType([...categories]); // компонент jsx, [...categories] превратили из коллекци в массив
+      console.log('listType ', listType)
       choicesBox.append(listType);
-    
-      // const products = store.getProducts();
-      // store.updateCategories(products);
-      // const newCategories = store.getCategories();
-      
-      // console.log('newCategories in choiceType ', newCategories)
     }
     else{
       typeChoices.style.display = 'none';

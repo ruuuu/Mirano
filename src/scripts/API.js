@@ -21,7 +21,7 @@ const formatQueryString = (params) => {  // params = { type: 'toys', minPrice: 1
 
 
 
-export const fetchProducts = async (params = {}) => {  // по умолчанию пустой
+export const fetchProducts = async (params = {}) => {  // по умолчанию params пустой
 
   try{
       const response = await fetch(`${API_URL}/api/products${formatQueryString(params)}`); // без await вернет промис
@@ -40,6 +40,4 @@ export const fetchProducts = async (params = {}) => {  // по умолчани�
       console.error(`Ошибка при получении данных: ${error}`);
       return [];
   }
-
- 
 }
