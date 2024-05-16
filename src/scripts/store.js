@@ -1,6 +1,10 @@
+import { API_URL } from "./API.js";
+
+
+
 class Store{
 
-  // паттерн- obsrver 
+  // паттерн- observer 
   constructor(){
     // нач значения
     this.observers = [];   // массив(наблюдателей) состоящий из фукнций ()=>{}
@@ -61,7 +65,7 @@ class ProductStore extends Store{  // наследуем ProductStore от Store
 
 
 
-class cartStore extends Store{
+class CartStore extends Store{
 
   constructor(){
     super();
@@ -71,29 +75,20 @@ class cartStore extends Store{
 
   async init(){
     await this.registerCart(); // при регитрации придут куки
-    await this.fetchcart();
+    await this.fetchCart();
   }
 
 
-  async registerCart(){ //регистрация
+  async registerCart(){ // Регистрирует новую корзину и возвращает уникальный ключ доступа (`accessKey`), который сохраняется в куках.
     try{
       const response = await fetch(`${API_URL}/api/cart/register`, {
         method: 'POST',
         credentials: 'include',  // мои куки будут передатьвася серверу
-        headers: {
-          'Content-Type': 'application/json'
-        }, 
-        body: JSON.stringify({ productId: id, quantity: quantity })
       });
 
       if(!response.ok){
         throw new Error(`ошибка запроса: ${response.status}`);
       }
-
-      const data = await response.json();
-      this.cart = data;
-      this.notifyObservers();
-
     }
     catch(error){
       console.error(error);
@@ -127,7 +122,7 @@ class cartStore extends Store{
   }
 
 
-  async postCart({id, quantity}){  // добавление товара в Корзину
+  async postCart({ id, quantity }){  // добавление товара в Корзину
 
       try{
         const response = await fetch(`${API_URL}/api/cart/items`, {
@@ -154,11 +149,12 @@ class cartStore extends Store{
   }
 
 
-  async addProcutCart(id){ // добавление  1 го товара в Корзину
-    await this.postCart({ id, quantity: 1});
+  async addProductCart(id){ // добавление  1 го товара в Корзину
+    await this.postCart({ id: id, quantity: 1});
   }
 
 };
 
 
-export const store = new ProductStore(); // создание объекта класса
+export const productStore = new ProductStore(); // создание объекта класса
+export const cartStore = new CartStore();

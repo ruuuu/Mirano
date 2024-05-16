@@ -1,4 +1,4 @@
-import { ProductStore } from "./store.js";
+import { productStore } from "./store.js";
 import { ListType } from "./ListType.jsx";
 
 
@@ -13,7 +13,7 @@ export const initChoicesType = () => {
 
   const updateTypeChoicesVisibility = () => {
     
-    const categories = ProductStore.getCategories(); // { 'Монобукеты', 'WoW Эффект', 'Авторские букеты', 'Букеты из сухоцветов', 'Цветы в коробке'}
+    const categories = productStore.getCategories(); // { 'Монобукеты', 'WoW Эффект', 'Авторские букеты', 'Букеты из сухоцветов', 'Цветы в коробке'}
 
     //console.log('categories from initChoicesType ', categories)
 
@@ -30,7 +30,7 @@ export const initChoicesType = () => {
     }
   }; 
 
-  ProductStore.subscribe(updateTypeChoicesVisibility);
+  productStore.subscribe(updateTypeChoicesVisibility);
     
   updateTypeChoicesVisibility();
 };

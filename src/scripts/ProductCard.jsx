@@ -1,5 +1,6 @@
 // карточка товара 
 import { API_URL } from "./API.js";
+import { cartStore } from "./store.js";
 
 
 
@@ -14,8 +15,8 @@ export const ProductCard = (product) => {
             <h3 class="card__title"> {product.name} </h3>
             <div class="card__footer">
               <p class="card__date-delivery"> сегодня&nbsp;в&nbsp;14:00 </p>
-              {/* onMouseEnter- событие навдеения мышки: */}
-              <button class="card__button" onMouseEnter={(evt) => {evt.target.textContent = "В Корзину"}} onMouseLeave={(evt) => {evt.target.innerHTML = `${product.price}&nbsp;P`}}> {product.price}&nbsp;P </button>
+              {/* onMouseEnter- событие наведения мышки: */}
+              <button class="card__button" onMouseEnter={(evt) => {evt.target.textContent = "В Корзину"}} onMouseLeave={(evt) => {evt.target.innerHTML = `${product.price}&nbsp;P`}}  onClick={() => { cartStore.addProductCart(product.id) }} > {product.price}&nbsp;P </button>
             </div>
           </div>
         </article>

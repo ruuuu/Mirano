@@ -1,4 +1,4 @@
-import { ProductStore } from "./store.js";
+import { productStore } from "./store.js";
 export const API_URL = 'http://localhost:3000';
 
 
@@ -33,7 +33,7 @@ export const fetchProducts = async (params = {}) => {  // по умолчани�
       
       console.log('products ',  products)
       
-      ProductStore.setProducts(products);  // записали в store
+      productStore.setProducts(products);  // записали в store
       // return products;
   }
   catch(error){
