@@ -3,7 +3,7 @@ import { renderCart } from "./renderCart.js";
 
 
 
-const headerCartBtn = document.querySelector('.header__cart-btn');
+const headerCartBtn = document.querySelector('.header__cart-btn'); // цифра на иконке корзины
 const cartClose = document.querySelector('.cart__close');
 const cart = document.querySelector('.cart');
 
@@ -23,11 +23,16 @@ const toggleCart = () => {
 export const initCart = async() => {
 
   await cartStore.init();
-
+  headerCartBtn.textContent = cartStore.getCart().length;
+  headerCartBtn.addEventListener('click', toggleCart);
   renderCart();
   
-  headerCartBtn.addEventListener('click', toggleCart);
+  
+  cartStore.subscribe(() => {
+    headerCartBtn.textContent = cartStore.getCart().length;
+  });
 
+  
   cartClose.addEventListener('click', () => {
     cart.classList.remove('cart--open')
   });
