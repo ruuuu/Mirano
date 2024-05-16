@@ -74,7 +74,7 @@ class CartStore extends Store{
 
 
   async init(){
-    await this.registerCart(); // при регитрации придут куки
+    await this.registerCart(); // при регитрации получим accessKey
     await this.fetchCart();
   }
 
