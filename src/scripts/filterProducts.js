@@ -36,7 +36,7 @@ export const filterProducts = () => {
       params.maxPrice = maxPrice;
     }
 
-    console.log('params: ', params) // {type: 'toys', minPrice: '1500'}  {type: 'toys', maxPrice: '1700'}
+    console.log('params: ', params) // { type: 'toys', minPrice: '1500' }  { type: 'toys', maxPrice: '1700' }
     // fetchProducts(params);
     callbackWithPreload(goodSection, fetchProducts, params); // отбражение и скрытие прелоадера
   }
@@ -47,7 +47,7 @@ export const filterProducts = () => {
 
  
 
-  filterForm.addEventListener('input', (evt) => { // при каждом вводе в поле сработает событие
+  filterForm.addEventListener('input', (evt) => { // при каждом вводе в поле, сработает событие
     const target = evt.target;
     // console.log('target ', target); // <input type="radio">
 

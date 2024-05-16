@@ -1,5 +1,5 @@
 import { ProductCard } from "./ProductCard.jsx";
-import { store } from "./store.js";
+import { ProductStore } from "./store.js";
 
 
 export const renderProducts =  () => {
@@ -7,7 +7,7 @@ export const renderProducts =  () => {
   const goodsList = document.querySelector('.goods__list');
 
   const updateList = () => {
-    const products = store.getProducts(); // вместо await fetchProducts(), товары получаем уже не  с сервера,  а с хранилища
+    const products = ProductStore.getProducts(); // вместо await fetchProducts(), товары получаем уже не  с сервера,  а с хранилища
     goodsList.innerHTML = '';
 
     if(products.length === 0){
@@ -27,6 +27,6 @@ export const renderProducts =  () => {
   };
 
 
-  store.subscribe(updateList);
+  ProductStore.subscribe(updateList);
   updateList(); // вызов в первый раз
 }
