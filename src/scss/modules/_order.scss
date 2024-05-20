@@ -15,7 +15,6 @@
   padding: 9px;
   background-color: rgba(0, 0, 0, 0.7);
 
-
   &__wrapper {
     max-width: 625px;
     display: flex;
@@ -30,6 +29,7 @@
     }
   }
 
+
   &__title {
     text-align: center;
     margin-bottom: 40px;
@@ -43,13 +43,16 @@
     }
   }
 
+
   &__form {
     display: flex;
     flex-direction: column;
     gap: 24px;
   }
 
+
   &__fieldset {}
+
 
   &__legend {
     margin-bottom: 12px;
@@ -62,17 +65,18 @@
     }
   }
 
+
   &__input-group {
     display: flex;
     justify-content: space-between;
     gap: 12px;
-
 
     @include mobile {
       flex-wrap: wrap;
       gap: 8px;
     }
   }
+
 
   &__input {
     width: calc(50% - 6px); // где 6px=gap/2
@@ -106,6 +110,7 @@
     margin-bottom: 12px;
   }
 
+
   &__label-radio {
     position: relative;
     display: block;
@@ -113,15 +118,94 @@
 
   }
 
+
   &__radio {
     position: absolute;
+    appearance: none; // не отображает
+    width: 16px;
+    height: 16px;
+    top: 50%; //по вертикали
+    left: 0;
+    transform: translateY(-50%); //  чтоб отцентровтаь сам радиобатон
+
+    &::before {
+      // обводка у радиобаттона
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: block;
+      border-radius: 50%;
+      border: 1px solid $orange;
+    }
+
+    &::after {
+      // кружочек у радибаттона
+      content: '';
+      position: absolute; // относиельно .input__radio
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $orange;
+      opacity: 0;
+    }
+
+    &:checked::after {
+      //выбранный радиобатон
+      opacity: 1;
+    }
   }
 
-  &__delivery {}
 
-  &__select-wrapper {}
+  &__delivery {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
 
-  &__select {}
+
+  &__select-wrapper {
+    position: relative;
+    width: min-content;
+
+    &::after {
+      // стрелочка вниз
+      content: '';
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%); //  чтоб отцентровтаь 
+      display: block;
+      width: 8px;
+      height: 8px;
+      background-image: url('/img/arrow-down.svg');
+      background-repeat: no-repeat;
+      background-size: contain; // занимает все пространство
+      background-position: center;
+      pointer-events: none; // иначе не будет проходить клик по select
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &--active ::after {
+      // стрелочка перевернутая вверх
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+
+
+  &__select {
+    width: 190px;
+    border-radius: 8px;
+    padding: 8px 40px 8px 16px;
+    background-color: $bg;
+    appearance: none; // убирает системную стрелочку
+  }
 
 
   &__close {}
