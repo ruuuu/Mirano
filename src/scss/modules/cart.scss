@@ -172,6 +172,7 @@
     }
   }
 
+
   &__price {
     //грид элемент
     grid-area: price;
@@ -179,12 +180,14 @@
     font-weight: 400;
   }
 
+
   &__footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: auto;
   }
+
 
   &__order-btn {
     padding: 9px 16px 8px 16px;
@@ -198,6 +201,12 @@
 
     &:active {
       background-color: $orange;
+    }
+
+    &:disabled {
+      // задизейбленная
+      background-color: $light-orange;
+      opacity: 0.4;
     }
   }
 }

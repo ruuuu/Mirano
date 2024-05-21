@@ -16,19 +16,19 @@ const toggleCart = () => {
       behavior: 'smooth'
     })
   }
-}
+};
 
 
 
 export const initCart = async() => {
 
-  await cartStore.init();
+  await cartStore.init(); // асинхронная
   headerCartBtn.textContent = cartStore.getCart().length;
   headerCartBtn.addEventListener('click', toggleCart);
   renderCart();
   
   
-  cartStore.subscribe(() => {
+  cartStore.subscribe(() => { // когда Корзина обновится, тогда вызовется переданная фнция
     headerCartBtn.textContent = cartStore.getCart().length;
   });
 

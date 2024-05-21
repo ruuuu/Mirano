@@ -1,6 +1,7 @@
 
-const jsx = (tag, attributes = {}, ...children) => { // ...children - дочерние элементы, attributes = { class: '', src: '', alt: '' }
+const jsx = (tag, attributes = {}, ...children) => { // ...children - дочерние элементы, attributes = { class: '', src: '', alt: '', for: '',  }
 
+  attributes = attributes || {};
   //console.log('tag: ', tag, ', attributes: ', attributes, ', children: ', children );
 
   if(typeof tag === 'function'){  // если тэг это фукнция
@@ -11,10 +12,12 @@ const jsx = (tag, attributes = {}, ...children) => { // ...children - дочер
 
  
   //console.log(Object.entries(attributes))   // [ ['class' 'card__image',]  ['src', '/img/floer1.jpg'],  ['alt', 'Наименование'] ]
+  
   // перебираем объект:
-  Object.entries(attributes).forEach(([key, value]) => {
+  Object.entries(attributes).forEach(([ key, value ]) => {
     if(key === 'class'){
-      element.classList.add(...value.split(' '));  // 'goods__card', 'card'
+      //console.log("...value.split(' '): ", ...value.split(' '))  // ['goods__card', 'card']-если элемент имете несклько классов
+      element.classList.add(...value.trim().split(' '));  // 'goods__card', 'card'
     }
     else if(key.startsWith('on') && key.toLowerCase() in window){  // если key это обработчик события, ex: onSubmit, onClick
       element.addEventListener(key.toLowerCase().substring(2), value);        // value это  функция - обработчки

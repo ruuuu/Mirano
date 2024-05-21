@@ -1,10 +1,9 @@
 import { API_URL } from "./API.js";
 
 
-
+  // паттерн - observer 
 class Store{
 
-  // паттерн- observer 
   constructor(){
     // нач значения
     this.observers = [];   // массив(наблюдателей) состоящий из фукнций ()=>{}
@@ -24,7 +23,7 @@ class Store{
 
 
 
-class ProductStore extends Store{  // наследуем ProductStore от Store(тем самым поле this.observers и методы наследуются)
+class ProductStore extends Store {  // наследуем ProductStore от Store(тем самым поле this.observers и методы наследуются)
 
   constructor(){
     super(); // вызов контурктора класса Store(родителя)
@@ -141,7 +140,6 @@ class CartStore extends Store{
         const data = await response.json();
         this.cart = data;
         this.notifyObservers();
-  
       }
       catch(error){
         console.error(error);
@@ -149,7 +147,7 @@ class CartStore extends Store{
   }
 
 
-  async addProductCart(id){ // добавление  1 го товара в Корзину
+  async addProductCart(id){ // добавление  1 го товара в Корзину по его id
     await this.postCart({ id: id, quantity: 1});
   }
 

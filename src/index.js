@@ -7,7 +7,7 @@ import { renderProducts } from './scripts/renderProducts.js';
 import { initChoicesType } from './scripts/choicesType.js';
 import { filterProducts } from './scripts/filterProducts.js';
 import { initSearchProducts } from './scripts/searchProducts.js';
-
+import { initOrder } from './scripts/orderController.js';
 
 
 const init = () => {
@@ -19,6 +19,7 @@ const init = () => {
   //fetchProducts({ type: 'bouquets' });  // { type: 'toys', minPrice: 1500 }
   filterProducts();
   renderProducts();
+  initOrder();
   
 
   // setTimeout(() => {
@@ -34,9 +35,11 @@ const init = () => {
 }
 
 init();
+// либо:
+// document.addEventListener('DOMContentLoaded', init) // как только загрузится html вызовется init()
 
-// для старых браузеров(котрые не знают про type="module" в  <script type="module" src="/src/index.js"></script>):
-//document.addEventListener('DOMContentLoaded', init) // как только загрузится html вызовется init()
+// для старых браузеров(котрые не знают про type="module" в index.html указыаем  <script type="module" src="/src/index.js"></script>):
+
 
 
 

@@ -4,16 +4,17 @@
 
 .order {
 
-  position: fixed;
+  position: fixed; // 
   z-index: 999;
   // растянется на всю ширину:
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  display: flex; // none
+  display: none; // flex
   padding: 9px;
   background-color: rgba(0, 0, 0, 0.7);
+
 
   &__wrapper {
     max-width: 625px;
@@ -85,10 +86,18 @@
     border: 1px solid transparent;
     background-color: $bg;
 
+    @include mobile {
+      width: 100%;
+    }
 
     &--min {
       width: calc(25% - 9px);
+
+      @include mobile {
+        width: calc(50% - 4px); // 4px = gap/2
+      }
     }
+
 
     &:hover {
       background-color: $pattern;
@@ -115,7 +124,6 @@
     position: relative;
     display: block;
     padding-left: 28px;
-
   }
 
 
@@ -167,6 +175,13 @@
     display: flex;
     align-items: center;
     gap: 12px;
+    margin-bottom: 40px;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: flex-start;
+
+    }
   }
 
 
@@ -205,8 +220,61 @@
     padding: 8px 40px 8px 16px;
     background-color: $bg;
     appearance: none; // убирает системную стрелочку
+    border: 1px solid transparent;
+
+    &:focus-visible {
+      border-color: $light-orange;
+      outline: none;
+    }
   }
 
 
-  &__close {}
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+  &__total-price {
+    font-size: 18px;
+    color: $dark;
+
+    @include mobile {
+      font-size: 14px;
+    }
+  }
+
+
+  &__button {
+    max-width: 274px;
+    width: 100%;
+    padding: 8px 16px;
+    border-radius: 32px;
+    border: 1px solid transparent;
+    background-color: $light-orange;
+    color: $white;
+
+    &:hover {
+      background-color: $orange;
+    }
+
+    &:focus-visible {
+      border-color: $light-orange;
+      background-color: $orange;
+      outline: none;
+    }
+
+    @include mobile {
+      max-width: 169px;
+      font-size: 18px;
+    }
+  }
+
+
+  &__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
 }

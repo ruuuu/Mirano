@@ -33,7 +33,6 @@ export const renderCart = () => {
     cartPriceTotal.innerHTML = `${totalPriceValue}&nbsp;₽`;
   };
 
- 
 
   cartStore.subscribe(updateList);
 
