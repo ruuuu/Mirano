@@ -2,11 +2,15 @@
 
 const openSelect = () => {
 
+  const selectWrapper = document.querySelector('.order__select-wrapper');
+  selectWrapper.classList.add('order__select-wrapper--active')
+
 }; 
 
 
 const closeSelect = () => {
-
+  const selectWrapper = document.querySelector('.order__select-wrapper');
+  selectWrapper.classList.remove('order__select-wrapper--active')
 }; 
 
 
@@ -62,7 +66,7 @@ export const Order = (totalPrice) => {
           <fieldset class="order__fieldset">
             <div class="order__payment">
               <label class="order__label-radio"> 
-                <input class="order__radio" type="radio" name="payment-online" checked /> Оплата онлайн
+                <input class="order__radio" type="radio" name="payment-online" value="true" checked /> Оплата онлайн
               </label>
             </div>
 
@@ -71,8 +75,8 @@ export const Order = (totalPrice) => {
               <input type="hidden" name="delivery-date" value={deliveryDate} />
 
               <div class="order__select-wrapper">
-              {/* onMouseDown когда нажали мышкой */}
-                <select class="order__select" name="delivery-time" id="delivery" onFocus={()=>{openSelect}} onMouseDown={()=>{}} onBlur={()=>{closeSelect}}>
+              {/* событие onBlur сработае при закрытии спсика */}
+                <select class="order__select" name="delivery-time" id="delivery" onFocus={openSelect}  onBlur={closeSelect}>
                   <option value="9-12">с 9:00 до 12:00</option>
                   <option value="12-15">с 12:00 до 15:00</option>
                   <option value="15-18">с 15:00 до 18:00</option>
