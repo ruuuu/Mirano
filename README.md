@@ -1,4 +1,4 @@
-Проект выложен на versel.com(https://mirano-zeta.vercel.app) и render.com (https://mirano-xds4.onrender.com)  (New -> Static Site)
+Проект выложен на versel.com(https://mirano-zeta.vercel.app) и render.com (https ://mirano-xds4.onrender.com)  (New -> Static Site)
 Сборка в папке dist
 Сервер выложен на https://diamond-trusting-hardcover.glitch.me
 

@@ -19,5 +19,4 @@ export const CartElem = (cartProduct) => (  //  комопнент реакт, �
       </div>
       <p class="cart__price"> {cartProduct.price * cartProduct.quantity}&nbsp;₽ </p>
     </li>
-  
 );

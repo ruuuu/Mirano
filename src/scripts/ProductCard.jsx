@@ -7,9 +7,10 @@ import { cartStore } from "./store.js";
 
  // как в реакт (компонент jsx)
 export const ProductCard = (product) => {
-
+  
+  // для каждого элемента будет вызыватья функция jsx из jsx.js:
   return ( 
-      <li class="goods__item">
+      <li class="goods__item"> 
         <article class="goods__card card">
           <img class="card__image" src={`${API_URL}${product.photoUrl}`} alt={product.name} />
           <div class="card__content">

@@ -1,7 +1,7 @@
 import { productStore } from "./store.js";
-// export const API_URL = 'https://diamond-trusting-hardcover.glitch.me'; //   http://localhost:3000  https://mirano-api-h7q7.onrender.com(на render.com выложили),  https://grape-speckled-lathe.glitch.me
+export const API_URL = 'https://diamond-trusting-hardcover.glitch.me'; //   http://localhost:3000  https://mirano-api-h7q7.onrender.com(на render.com выложили),  https://grape-speckled-lathe.glitch.me
 
-export const API_URL = 'http://localhost:3000';
+//export const API_URL = 'http://localhost:3000';
 
 
 // формируем строку состоящу из search-парамтеров::

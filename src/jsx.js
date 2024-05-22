@@ -10,23 +10,25 @@ const jsx = (tag, attributes = {}, ...children) => { // ...children - дочер
 
   const element = document.createElement(tag);
 
- 
-  //console.log(Object.entries(attributes))   // [ ['class' 'card__image',]  ['src', '/img/floer1.jpg'],  ['alt', 'Наименование'] ]
+  // attributes = { class: 'card__image',  src: '/img/flower1.jpg',  alt: 'Наименование' }
+  //console.log(Object.entries(attributes))   // [ ['class' 'card__image',]  ['src', '/img/flower1.jpg'],  ['alt', 'Наименование'] ]
   
   // перебираем объект:
   Object.entries(attributes).forEach(([ key, value ]) => {
     if(key === 'class'){
-      //console.log("...value.split(' '): ", ...value.split(' '))  // ['goods__card', 'card']-если элемент имете несклько классов
-      element.classList.add(...value.trim().split(' '));  // 'goods__card', 'card'
+      // value='goods__card card'
+      // сперва выполнится value.trim().split(' '), полуим массив ['goods__card', 'card'] 
+      // потом ..., полуим goods__card', 'card':
+      element.classList.add(...value.trim().split(' '));
     }
-    else if(key.startsWith('on') && key.toLowerCase() in window){  // если key это обработчик события, ex: onSubmit, onClick
+    else if(key.startsWith('on') && key.toLowerCase() in window){  // если key это обработчик события, ex: onSubmit, onClick и если событие есть в объекте window
       element.addEventListener(key.toLowerCase().substring(2), value);        // value это  функция - обработчки
     }
     else if(key === 'style' && typeof value === 'object'){
       Object.assign(element.style, value);
     }
     else{
-      element.setAttribute(key, value);
+      element.setAttribute(key, value); // <element key='value'>
     }
   });
 
