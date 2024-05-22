@@ -1,7 +1,9 @@
 @use '../variables' as *;
 @use '../media' as *;
 
+// имя анимации slideDown
 @keyframes slideDown {
+
   to {
     top: 0;
   }

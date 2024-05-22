@@ -3,7 +3,7 @@ import { API_URL } from "./API.js";
 import { cartStore } from "./store.js";
 
 
-
+// в vite.config.js прописали  jsxInject: "import jsx from '@/jsx.js'", так мы связали jsx.jsx с этим компонентом ProductCard 
  // как в реакт (компонент jsx)
 export const ProductCard = (product) => {
 

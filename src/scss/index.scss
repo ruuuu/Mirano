@@ -11,4 +11,4 @@
 @use './modules/cart';
 @use './modules/preload';
 @use './modules/order';
-@import 'normalize.css';
+@import 'normalize.css'; // при сборке сперва сработает import,  а потом @use 
