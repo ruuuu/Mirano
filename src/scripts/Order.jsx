@@ -1,6 +1,6 @@
 // мод окно заказа:
 
-const openSelect = () => {
+const openSelect = () => { // стрелочка вверх перевернется
 
   const selectWrapper = document.querySelector('.order__select-wrapper');
   selectWrapper.classList.add('order__select-wrapper--active')
@@ -8,7 +8,7 @@ const openSelect = () => {
 }; 
 
 
-const closeSelect = () => {
+const closeSelect = () => { // стрелочка вниз перевернется
   const selectWrapper = document.querySelector('.order__select-wrapper');
   selectWrapper.classList.remove('order__select-wrapper--active')
 }; 
@@ -32,7 +32,6 @@ export const Order = (totalPrice) => {
   const deliveryDate = `${day}.${month}`;
 
   return (
-
     <div class="order">
       <div class="order__wrapper">
         <h2 class="order__title"> Оформить заказ </h2>
@@ -95,7 +94,6 @@ export const Order = (totalPrice) => {
 
       <button class="order__close" type="button">&times;</button>
     </div>
-
   )
 
-}
+};

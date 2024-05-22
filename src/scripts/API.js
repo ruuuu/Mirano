@@ -1,5 +1,5 @@
 import { productStore } from "./store.js";
-export const API_URL = 'https://grape-speckled-lathe.glitch.me'; //   http://localhost:3000  https://mirano-api-h7q7.onrender.com(на render.com выложили)
+export const API_URL = 'https://diamond-trusting-hardcover.glitch.me'; //   http://localhost:3000  https://mirano-api-h7q7.onrender.com(на render.com выложили),  https://grape-speckled-lathe.glitch.me
 
 
 
@@ -40,4 +40,31 @@ export const fetchProducts = async (params = {}) => {  // по умолчани�
       console.error(`Ошибка при получении данных: ${error}`);
       return [];
   }
-}
+};
+
+
+
+export const sendOrder = async (orderData) => {
+
+  try{
+    const response = await fetch(`${API_URL}/api/orders`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      }, 
+      body: JSON.stringify(orderData)
+    }); 
+  
+    if(!response.ok){
+      throw new Error(`HTTP status is ${response.status}`); // перейдем в блок catch
+    }
+
+    return await response.json();
+  }
+  catch(error){
+      console.error(`Ошибка отправки данных: ${error}`);
+  }
+
+
+};  

@@ -151,6 +151,12 @@ class CartStore extends Store{
     await this.postCart({ id: id, quantity: 1});
   }
 
+
+  clearCart(){
+    this.cart = [];
+    this.notifyObservers();
+  }
+
 };
 
 

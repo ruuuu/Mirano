@@ -1,15 +1,19 @@
 import { cartStore } from './store.js';
 import { Order } from './Order.jsx';
+import { sendOrder } from './API.js';
+import { OrderSuccess } from './OrderSuccess.jsx';
 
 
 
 const cartOrderBtn = document.querySelector('.cart__order-btn');
-//console.log('cartStore: ', cartStore)
+const cartElem = document.querySelector('.cart');
+
 
 
 const openOrder = () => {
 
   const cart = cartStore.getCart();     // [ { price, quntity }, {} ]
+ console.log('cart in openOrder: ', cart)
 
   const totalPriceValue = cart.reduce((acc, productCart) => {
     return acc + productCart.price * productCart.quantity
@@ -17,14 +21,15 @@ const openOrder = () => {
 
 
   const order = Order(totalPriceValue);
-  console.log('order : ', order)
+  //console.log('order : ', order)
 
   
   document.body.append(order);
   document.querySelector('.order').style.display = 'flex';
 
-  order.addEventListener('click', ({ target }) => {
-    if(target === order || target.closest('.order__close')){
+  order.addEventListener('click', ({ target }) => { // закрытие формы заказа
+    console.log('target:  ',  target)
+    if(target === order || target.closest('.order__close')){  // traget- элемент на котрый надали
       order.remove();  // удаляет элемент
     }
   });
@@ -32,11 +37,14 @@ const openOrder = () => {
 
   const form = document.querySelector('.order__form');
 
-  form.addEventListener('submit', (evt) => {  // отправка данных формы на сервер
+  form.addEventListener('submit', async(evt) => {  // отправка данных формы на сервер
     evt.preventDefault();
 
     const formData = new FormData(form); // встроенный объект
-    const data = {
+    // formData.get('') венет значение поля
+
+
+    const dataOrder = {
       buyer: {
         name: formData.get('name-buyer'), // передаем значение атрибута name у поля
         phone: formData.get('phone-buyer')
@@ -51,10 +59,19 @@ const openOrder = () => {
       deliveryTime: formData.get('delivery-time')
     }
 
+    console.log('cartStore до отправки формы : ', cartStore)
 
-  })
+    const result = await sendOrder(dataOrder);
+    // console.log('result ', result) // { message: 'Order received and saved successfully', orderId: 'ae750edf-8fe5-4653-8b9f-2c4923714997' } 
 
-
+    const orderSuccess = OrderSuccess(result.orderId);
+    //console.log('orderSuccess: ', orderSuccess)
+    order.textContent = ''; // очищаем
+    order.append(orderSuccess);
+    cartStore.clearCart();
+    //console.log('cartStore after clearing: ', cartStore)
+    cartElem.classList.remove('cart__open');
+  });
 };
 
 
@@ -76,9 +93,7 @@ export const initOrder = () => {
   };
 
 
-
   cartStore.subscribe(checkCart) // когда Корзина обновится, тогда вызовется checkCart() 
 
-  cartOrderBtn.addEventListener('click', openOrder);
-
+  cartOrderBtn.addEventListener('click', openOrder); // кнопка Офрмить в Корзине
 }
