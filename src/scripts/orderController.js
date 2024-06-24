@@ -13,7 +13,7 @@ const cartElem = document.querySelector('.cart');
 const openOrder = () => {
 
   const cart = cartStore.getCart();     // [ { price, quntity }, {} ]
- console.log('cart in openOrder: ', cart)
+  console.log('cart in openOrder: ', cart)
 
   const totalPriceValue = cart.reduce((acc, productCart) => {
     return acc + productCart.price * productCart.quantity
@@ -28,8 +28,8 @@ const openOrder = () => {
   document.querySelector('.order').style.display = 'flex';
 
   order.addEventListener('click', ({ target }) => { // закрытие формы заказа
-    console.log('target:  ',  target)
-    if(target === order || target.closest('.order__close')){  // traget- элемент на котрый надали
+    console.log('target:  ',  target);
+    if(target === order || target.closest('.order__close')){  // target- элемент на котрый надали
       order.remove();  // удаляет элемент
     }
   });

@@ -14,14 +14,15 @@ export const filterProducts = () => {
   const goodSection = document.querySelector('.goods');
 
 
-  const applyFilters = () => { 
-    const formData = new FormData(filterForm); // FormData -встроенный объект
-    const type = formData.get('type');
-    const minPrice = formData.get('minPrice'); // значнеие поля у котрого name="minPrice"
+  const applyFilters = (category) => {  // category- Тип товара
+
+    const formData = new FormData(filterForm);    // FormData -встроенный объект
+    const type = formData.get('type');            // значнеие поля у котрого name="type"
+    const minPrice = formData.get('minPrice');    // значнеие поля у котрого name="minPrice"
     console.log('minPrice: ', minPrice)
    
     const maxPrice = formData.get('maxPrice');
-    console.log('maxPrice: ', maxPrice)
+    console.log('maxPrice: ', maxPrice);
     const params = {};
 
     if(type){
@@ -36,14 +37,19 @@ export const filterProducts = () => {
       params.maxPrice = maxPrice;
     }
 
-    console.log('params: ', params) // { type: 'toys', minPrice: '1500' }  { type: 'toys', maxPrice: '1700' }
+    if(category){  // Тип товара
+      params.category = category;
+    }
+
+    console.log('params: ', params) // { type: 'toys', category: 'Wow букет', minPrice: '1500' }  { type: 'toys', category: 'Wow букет', maxPrice: '1700' }
     // fetchProducts(params);
     callbackWithPreload(goodSection, fetchProducts, params); // отбражение и скрытие прелоадера
-  }
+  };
  
+
   applyFilters(); 
 
-  const applyPriceFilters = debounce(applyFilters, 500); // чтобы фильтр резко не срабатывал, фунуия вызывается через каждые 300ms. Снимаем нагрузку на сервер, запрос отправится тлоько когда перестанем вводить    
+  const applyPriceFilters = debounce(applyFilters, 500); // чтобы фильтр резко не срабатывал, фунуия вызывается через каждые 500ms. Снимаем нагрузку на сервер, запрос отправится тлоько когда перестанем вводить    
 
  
 
@@ -51,7 +57,7 @@ export const filterProducts = () => {
     const target = evt.target;
     // console.log('target ', target); // <input type="radio">
 
-    if(target.name === 'type'){  // если нажали на радио input
+    if(target.name === 'type'){  // если нажали на input type="radio"
       goodsTitle.textContent = target.labels[0].textContent;
       filterForm.maxPrice.value = '';
       filterForm.minPrice.value = '';
@@ -62,6 +68,15 @@ export const filterProducts = () => {
 
     if(target.name === 'minPrice' || target.name === 'maxPrice'){  // если заполнили minPrice и maxPrice
       applyPriceFilters();
+    }
+  });
+
+
+
+  filterForm.addEventListener('click', ({ target }) => { 
+
+    if(target.closest('.filter__type-btn')){
+      applyFilters(target.textContent);
     }
   });
 

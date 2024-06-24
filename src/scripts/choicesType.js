@@ -2,7 +2,7 @@ import { productStore } from "./store.js";
 import { ListType } from "./ListType.jsx";
 
 
-// фильтрация по типу товара:
+// фильтрация по Тип товара:
 
 export const initChoicesType = () => {
 

@@ -32,9 +32,11 @@ class ProductStore extends Store {  // наследуем ProductStore от Stor
     this.categories = new Set();  // коллекция
   }
 
+  
   getProducts(){  
     return this.products; 
   }
+
 
   setProducts(newProducts){ // обновляем списк продуктов(добавляем новые товары)
     this.products = newProducts;
@@ -58,6 +60,7 @@ class ProductStore extends Store {  // наследуем ProductStore от Stor
         });
       }
     });
+    
     this.notifyObservers();
   }
 };
@@ -119,6 +122,7 @@ class CartStore extends Store{
       console.error(error);
     }
   }
+
 
 
   async postCart({ id, quantity }){  // добавление товара в Корзину

@@ -1,6 +1,7 @@
 import { debounce } from "./debounce.js";
+import { productStore } from "./store.js";
 
-// перемещение выпададюего списка Цеа и Тип товара:
+// перемещение выпадающего списка Цена и Тип товара:
 
 const adjustElementPosition = (elem, count = 0) => {
   const rect = elem.getBoundingClientRect(); // { bottom: , left: , width: , height: , right: , x: , y: }
@@ -61,6 +62,9 @@ export const initChoices = () => {
       adjustElementPosition(box);
       }),
     );
+
+    
+    productStore.subscribe(() => adjustElementPosition(box)); // когда productStore обновится тогда вызовется переданная функция 
 
 
     document.addEventListener('click', ({ target }) => {  // деструткрирвали объект события evt

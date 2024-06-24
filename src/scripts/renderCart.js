@@ -37,5 +37,4 @@ export const renderCart = () => {
   cartStore.subscribe(updateList);
 
   updateList();
-
 };
