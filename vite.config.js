@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
+import postcssConfig from './postcss.config';
 
 export default defineConfig(
  {
@@ -12,10 +13,13 @@ export default defineConfig(
       "@": "/src"
    } 
   },
+  css: {
+      postcss: postcssConfig,
+  },
   plugins: [
    ViteImageOptimizer({
       png: {
-         quality: 80,
+         quality: 80, // сжатие
       },
       jpeg: {
          quality: 80,
