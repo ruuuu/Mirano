@@ -1,12 +1,9 @@
-import { productStore } from "./store.js";
-export const API_URL = 'https://dull-rose-pawpaw.glitch.me'; //   http://localhost:3000  https://mirano-api-h7q7.onrender.com(на render.com выложили),  https://grape-speckled-lathe.glitch.me
-// https://diamond-trusting-hardcover.glitch.me
-// 
-//export const API_URL = 'http://localhost:3000';
+export const API_URL = 'https://diamond-trusting-hardcover.glitch.me'; //   http://localhost:3000  
+
 
 
 // формируем строку состоящу из search-парамтеров::
-const formatQueryString = (params) => {  // params = { type: 'toys', minPrice: 1500 }
+const formatQueryString = (params) => {  // params = { type: 'toys', minPrice: 1500,  minPrice: 1500 }
 
   if(Object.keys(params).length === 0){
     return '';  // выход из метода
@@ -18,7 +15,7 @@ const formatQueryString = (params) => {  // params = { type: 'toys', minPrice: 1
   });
   
   
-  return `?${searchParams.toString()}`; // ?type=toys&minPrice=1500
+  return `?${searchParams.toString()}`; // ?type=toys&minPrice=1500&maxPrice=1800
 };
 
 
@@ -35,8 +32,7 @@ export const fetchProducts = async (params = {}) => {  // по умолчани�
       
       console.log('products ',  products)
       
-      productStore.setProducts(products);  // записали в store
-      // return products;
+      return products;
   }
   catch(error){
       console.error(`Ошибка при получении данных: ${error}`);

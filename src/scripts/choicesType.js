@@ -13,9 +13,9 @@ export const initChoicesType = () => {
 
   const updateTypeChoicesVisibility = () => {
     
-    const categories = productStore.getCategories(); // { 'Монобукеты', 'WoW Эффект', 'Авторские букеты', 'Букеты из сухоцветов', 'Цветы в коробке'}
+    const categories = productStore.getCategories(); // коллекция { 'Монобукеты', 'WoW Эффект', 'Авторские букеты', 'Букеты из сухоцветов', 'Цветы в коробке'}
 
-    //console.log('categories from initChoicesType ', categories)
+    console.log('categories from initChoicesType ', categories)
 
     if(categories.size){
       typeChoices.style.display = '';

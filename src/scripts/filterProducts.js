@@ -1,7 +1,6 @@
-import { fetchProducts } from "./API.js";
 import { debounce } from "./debounce.js";
 import { callbackWithPreload } from "./preload.js";
-
+import { productStore } from "./store.js"; // импорт класса 
 
 
 
@@ -43,17 +42,18 @@ export const filterProducts = () => {
 
     console.log('params: ', params) // { type: 'toys', category: 'Wow букет', minPrice: '1500' }  { type: 'toys', category: 'Wow букет', maxPrice: '1700' }
     // fetchProducts(params);
-    callbackWithPreload(goodSection, fetchProducts, params); // отбражение и скрытие прелоадера
+    //                                                    bind нужен чтобы привязать this-контекст вызова к функции
+    callbackWithPreload(goodSection, productStore.fetchProducts.bind(productStore), params); // отбражение и скрытие прелоадера
   };
  
 
   applyFilters(); 
 
-  const applyPriceFilters = debounce(applyFilters, 500); // чтобы фильтр резко не срабатывал, фунуия вызывается через каждые 500ms. Снимаем нагрузку на сервер, запрос отправится тлоько когда перестанем вводить    
+  const applyPriceFilters = debounce(applyFilters, 500); // чтобы при фильрации запрос на сервер не  часто срабатывал, фунуия вызывается через каждые 500ms. Снимаем нагрузку на сервер, запрос отправится тлоько когда перестанем вводить    
 
  
 
-  filterForm.addEventListener('input', (evt) => { // при каждом вводе в поле, сработает событие
+  filterForm.addEventListener('input', (evt) => { // при каждом вводе символа в поле, сработает событие
     const target = evt.target;
     // console.log('target ', target); // <input type="radio">
 
@@ -75,7 +75,7 @@ export const filterProducts = () => {
 
   filterForm.addEventListener('click', ({ target }) => { 
 
-    if(target.closest('.filter__type-btn')){
+    if(target.closest('.filter__type-btn')){ // если элем targetили его родитель имеет указанный класс
       applyFilters(target.textContent);
     }
   });

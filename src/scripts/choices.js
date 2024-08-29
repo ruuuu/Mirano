@@ -1,7 +1,7 @@
 import { debounce } from "./debounce.js";
 import { productStore } from "./store.js";
 
-// перемещение выпадающего списка Цена и Тип товара:
+// перемещение при адаптиве выпадающих списков Цена и Тип товара(Категории):
 
 const adjustElementPosition = (elem, count = 0) => {
   const rect = elem.getBoundingClientRect(); // { bottom: , left: , width: , height: , right: , x: , y: }

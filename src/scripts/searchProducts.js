@@ -1,8 +1,7 @@
-import { fetchProducts } from "./API.js";
 import { callbackWithPreload } from "./preload.js";
+import { productStore } from "./store.js";
 
-
-
+// Поиск:
 export const initSearchProducts = () => {
 
   const headerForm =  document.querySelector('.header__form');
@@ -12,18 +11,18 @@ export const initSearchProducts = () => {
   headerForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
-    const formData = new FormData(headerForm); // втсроенный 
+    const formData = new FormData(headerForm); // встроенный 
 
-    const searchQuery = formData.get('search').trim();  // значнеие поля у котрого name="search", trim()-убирает пробелы
+    const searchQuery = formData.get('search').trim();  // получаем значнеие поля у котрого name="search", trim()-убирает пробелы
 
     if(searchQuery){
       goodsTitle.textContent = 'Результаты поиска';
-      callbackWithPreload(goodSection, fetchProducts, { search: searchQuery }); // отбражение и скрытие прелоадера
-      // fetchProducts({ search: searchQuery }); 
+      callbackWithPreload(goodSection, productStore.fetchProducts, { search: searchQuery }); // отбражение и скрытие прелоадера
+      // productStore.fetchProducts({ search: searchQuery }); 
     }
     // else{
     //   goodsTitle.textContent = '';
-    //   fetchProducts();
+    //   productStore.fetchProducts;
     // }
   });
 
