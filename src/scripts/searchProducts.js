@@ -17,7 +17,7 @@ export const initSearchProducts = () => {
 
     if(searchQuery){
       goodsTitle.textContent = 'Результаты поиска';
-      callbackWithPreload(goodSection, productStore.fetchProducts, { search: searchQuery }); // отбражение и скрытие прелоадера
+      callbackWithPreload(goodSection, productStore.fetchProducts(), { search: searchQuery }); // отбражение и скрытие прелоадера
       // productStore.fetchProducts({ search: searchQuery }); 
     }
     // else{

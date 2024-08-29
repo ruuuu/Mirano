@@ -42,8 +42,8 @@ export const filterProducts = () => {
 
     console.log('params: ', params) // { type: 'toys', category: 'Wow букет', minPrice: '1500' }  { type: 'toys', category: 'Wow букет', maxPrice: '1700' }
     // fetchProducts(params);
-    //                                                    bind нужен чтобы привязать this-контекст вызова к функции
-    callbackWithPreload(goodSection, productStore.fetchProducts.bind(productStore), params); // отбражение и скрытие прелоадера
+    //                                                  
+    callbackWithPreload(goodSection, productStore.fetchProducts(), params); // отбражение и скрытие прелоадера
   };
  
 

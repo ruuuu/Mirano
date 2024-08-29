@@ -36,22 +36,24 @@ class ProductStore extends Store {  // наследуем ProductStore от Stor
   }
 
 
-  async fetchProducts(params){ // params = { type: 'toys', category: 'Wow букет', minPrice: '1500', search: 'Пион' }
+  fetchProducts(){ 
 
     console.log('this of ProductStore ', this);
-
-    try{
-      this.error = null;
-      this.loading = true; // пока ждем ответа от сервера
-      this.products = await fetchProducts(params);
-      this.loading = false;  // товары получены с сервера
-      this.notifyObservers();
-    }
-    catch(err){
-      this.error = err;
-      this.products = [];
-      this.loading = false;  // товары получены с сервера
-      this.notifyObservers();
+    const _self = this;
+    return async (params) => {  // params = { type: 'toys', category: 'Wow букет', minPrice: '1500', search: 'Пион' }
+      try{
+        _self.error = null;
+        _self.loading = true; // пока ждем ответа от сервера
+        _self.products = await fetchProducts(params);
+        _self.loading = false;  // товары получены с сервера
+        _self.notifyObservers();
+      }
+      catch(err){
+        _self.error = err;
+        _self.products = [];
+        _self.loading = false;  // товары получены с сервера
+        _self.notifyObservers();
+      }
     }
   }
 
@@ -60,6 +62,9 @@ class ProductStore extends Store {  // наследуем ProductStore от Stor
     return this.products; 
   }
 
+  getLoading(){
+    return this.loading;
+  }
 
   setProducts(newProducts){     // обновляем списк продуктов(добавляем новые товары)
     this.products = newProducts;

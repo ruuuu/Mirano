@@ -10,7 +10,7 @@ export const renderProducts =  () => {
     const products = productStore.getProducts(); // вместо await fetchProducts(), товары получаем уже не  с сервера,  а с хранилища
     goodsList.innerHTML = '';
 
-    if(products.length === 0){
+    if(products.length === 0 && !productStore.loading){
         const messgeItem = document.createElement('li');
         messgeItem.classList.add('goods__no-product');
         messgeItem.textContent = 'Товары не найдены'; 
