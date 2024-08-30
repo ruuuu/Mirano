@@ -19,6 +19,7 @@
   &__box {
     max-width: 970px;
     flex-grow: 1; // будет занимать стоько сколько вместится
+    min-height: 310px;
   }
 
   &__title {
