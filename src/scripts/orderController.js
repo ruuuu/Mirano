@@ -20,7 +20,8 @@ const openOrder = () => {
   }, 0); // нач знач acc=0
 
 
-  const order = Order(totalPriceValue);
+
+  const order = Order(totalPriceValue);  // добавила     deliveryDate
   //console.log('order : ', order)
 
   
@@ -41,7 +42,7 @@ const openOrder = () => {
     evt.preventDefault();
 
     const formData = new FormData(form); // встроенный объект
-    // formData.get('') венет значение поля
+    // formData.get('') вернет значение поля
 
 
     const dataOrder = {
@@ -59,8 +60,32 @@ const openOrder = () => {
       deliveryTime: formData.get('delivery-time')
     }
 
-    console.log('cartStore до отправки формы : ', cartStore)
+    //console.log('cartStore до отправки формы : ', cartStore)
+ 
 
+    // const inputData = form['delivery-date']; // <input type="hidden" name="delivery-date" value="05.09">
+      
+    // if(formData.get('delivery-time') === '9-12'){
+    //   inputData.value = '12:00'
+    //   console.log(inputData)
+    // }
+
+    // if(formData.get('delivery-time') === '12-15'){ //
+    //   inputData.value = '17:00'
+    //   console.log(inputData)
+    // }
+
+    // if(formData.get('delivery-time') === '15-18'){
+    //   inputData.value = '09:00'
+    //   console.log(inputData)
+    // }
+
+    // if(formData.get('delivery-time') === '18-21'){
+    //     inputData.value = '09:00'
+    // }
+
+
+  
     const result = await sendOrder(dataOrder);
     // console.log('result ', result) // { message: 'Order received and saved successfully', orderId: 'ae750edf-8fe5-4653-8b9f-2c4923714997' } 
 
@@ -93,7 +118,7 @@ export const initOrder = () => {
   };
 
 
-  cartStore.subscribe(checkCart) // когда Корзина обновится, тогда вызовется checkCart() 
+  cartStore.subscribe(checkCart) // добавили checkCart в this.observers: когда this.cart обновится, тогда вызовется checkCart() 
 
   cartOrderBtn.addEventListener('click', openOrder); // кнопка Офрмить в Корзине
 }

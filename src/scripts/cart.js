@@ -28,7 +28,7 @@ export const initCart = async() => {
   renderCart();
   
   
-  cartStore.subscribe(() => { // когда Корзина обновится, тогда вызовется переданная фнция
+  cartStore.subscribe(() => { // добавили переданный колбэк в this.observers: когда this.cart обновится, тогда вызовется переданная фнция
     headerCartBtn.textContent = cartStore.getCart().length;
   });
 

@@ -31,6 +31,11 @@ export const Order = (totalPrice) => {
 
   const deliveryDate = `${day}.${month}`;
 
+
+  
+
+
+
   return (
     <div class="order">
       <div class="order__wrapper">

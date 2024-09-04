@@ -62,7 +62,7 @@ export const filterProducts = () => {
       filterForm.maxPrice.value = '';
       filterForm.minPrice.value = '';
       applyFilters();   
-      return; // выход
+      return; // выход из функции
     }
 
 

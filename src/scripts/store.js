@@ -7,18 +7,21 @@ class Store{
 
   constructor(){
     // нач значения
-    this.observers = [];   // массив(наблюдателей) состоящий из фукнций ()=>{}
+    this.observers = [];   // массив(функуий-наблюдателей за изменениями полей класса ProductStore и CartStore)
   }
 
 
-  subscribe(observerFunc){ // добавляет новые функции 
+  subscribe(observerFunc){ // добавляет новые функции в this.observers
     this.observers.push(observerFunc);
   }
 
-  
-  notifyObservers(){  // увдомляем наблюдателей об изменений this.observers
-    // console.log('this ', this)  // 
-    this.observers.forEach((observer) => observer()); 
+  //  когда меняются поля классов ProductStore и CartStore, тогда вызываются сответсующие фукнции из this.observers
+  notifyObservers(){  
+    
+    this.observers.forEach((observer) => {
+     // console.log('вызвались функции ', observer) 
+      observer();  // вызываются все фукнции которые есть в this.observers
+    })
   }
 };
 
@@ -38,21 +41,22 @@ class ProductStore extends Store {  // наследуем ProductStore от Stor
 
   fetchProducts(){ 
 
-    console.log('this of ProductStore ', this);
-    const _self = this;
+    //console.log('this of ProductStore ', this);
+    const _self = this; // чтоб вернуть констект вызова this
+
     return async (params) => {  // params = { type: 'toys', category: 'Wow букет', minPrice: '1500', search: 'Пион' }
       try{
         _self.error = null;
         _self.loading = true; // пока ждем ответа от сервера
         _self.setProducts(await fetchProducts(params));
         _self.loading = false;  // товары получены с сервера
-        _self.notifyObservers();
+        _self.notifyObservers();  // после обновления полей this.loading и this.products, вызваются соответсующие функции
       }
       catch(err){
         _self.error = err;
         _self.setProducts([]);
         _self.loading = false;  // товары получены с сервера
-        _self.notifyObservers();
+        _self.notifyObservers(); // после обновления полей this.loading вызваются соответсующие функции
       }
     }
   }
@@ -69,7 +73,7 @@ class ProductStore extends Store {  // наследуем ProductStore от Stor
   setProducts(newProducts){     // обновляем списк продуктов(добавляем новые товары) [{}, {}]
     this.products = newProducts;
     this.updateCategories(newProducts);
-    this.notifyObservers();     // оповещаем всех об изменении
+    this.notifyObservers();     // после обновления this.products, вызываются соответсующие фукнции
   }
 
 
@@ -89,7 +93,7 @@ class ProductStore extends Store {  // наследуем ProductStore от Stor
       }
     });
     
-    this.notifyObservers();
+    this.notifyObservers(); // после обновления this.categories, вызываются соответющие функции
   }
 };
 
@@ -146,7 +150,7 @@ class CartStore extends Store{
 
       const data = await response.json();
       this.cart = data;
-      this.notifyObservers();
+      this.notifyObservers(); // оповещаем об измнении this.cart
     }
     catch(error){
       console.error(error);
@@ -188,7 +192,7 @@ class CartStore extends Store{
 
   clearCart(){
     this.cart = [];
-    this.notifyObservers();
+    this.notifyObservers(); // оповещаем об изменении this.cart
   }
 
 };

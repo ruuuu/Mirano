@@ -64,7 +64,7 @@ export const initChoices = () => {
     );
 
     
-    productStore.subscribe(() => adjustElementPosition(box)); // когда productStore обновится тогда вызовется переданная функция 
+    productStore.subscribe(() => adjustElementPosition(box)); // когда productStore(его поля) обновятся тогда вызовется переданная функция 
 
 
     document.addEventListener('click', ({ target }) => {  // деструткрирвали объект события evt

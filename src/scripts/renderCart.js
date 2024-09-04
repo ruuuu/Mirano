@@ -18,7 +18,7 @@ export const renderCart = () => {
       messageItem.classList.add('cart__no-product');
       cartList.append(messageItem);
       cartPriceTotal.textContent = '0';
-      return; // выход из метода
+      return; // выход из функции
     }
 
     const productCards = cart.map((item) => CartElem(item)); // либо так cart.map(CartElem);
@@ -34,7 +34,7 @@ export const renderCart = () => {
   };
 
 
-  cartStore.subscribe(updateList);
+  cartStore.subscribe(updateList); // добаивли updateList в this.observers: когла this.cart обновитсяб тогда вызовется updateList
 
   updateList();
 };

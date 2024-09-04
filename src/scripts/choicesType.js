@@ -30,7 +30,7 @@ export const initChoicesType = () => {
     }
   }; 
 
-  productStore.subscribe(updateTypeChoicesVisibility);
+  productStore.subscribe(updateTypeChoicesVisibility); // добавили updateTypeChoicesVisibility в this.observers: когда обновятся  поля класса productStore, вызовется updateTypeChoicesVisibility.  
     
   updateTypeChoicesVisibility();
 };

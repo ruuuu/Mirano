@@ -22,11 +22,9 @@ export const renderProducts =  () => {
         goodsList.append(productCard);
       });
     }
-
-    
   };
 
 
-  productStore.subscribe(updateList);
+  productStore.subscribe(updateList); // когда поля класса productStore обновятсяб тогда вызовется updateList
   updateList(); // вызов в первый раз
 }
