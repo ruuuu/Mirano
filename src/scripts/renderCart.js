@@ -21,7 +21,7 @@ export const renderCart = () => {
       return; // выход из метода
     }
 
-    const productCards = cart.map(CartElem);
+    const productCards = cart.map((item) => CartElem(item)); // либо так cart.map(CartElem);
     cartList.append(...productCards);
     console.log('productCards ', productCards); // [li.cart__item, li.cart__item, li.cart__item]
     console.log('...productCards ', ...productCards);

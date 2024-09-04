@@ -44,13 +44,13 @@ class ProductStore extends Store {  // наследуем ProductStore от Stor
       try{
         _self.error = null;
         _self.loading = true; // пока ждем ответа от сервера
-        _self.products = await fetchProducts(params);
+        _self.setProducts(await fetchProducts(params));
         _self.loading = false;  // товары получены с сервера
         _self.notifyObservers();
       }
       catch(err){
         _self.error = err;
-        _self.products = [];
+        _self.setProducts([]);
         _self.loading = false;  // товары получены с сервера
         _self.notifyObservers();
       }
@@ -66,7 +66,7 @@ class ProductStore extends Store {  // наследуем ProductStore от Stor
     return this.loading;
   }
 
-  setProducts(newProducts){     // обновляем списк продуктов(добавляем новые товары)
+  setProducts(newProducts){     // обновляем списк продуктов(добавляем новые товары) [{}, {}]
     this.products = newProducts;
     this.updateCategories(newProducts);
     this.notifyObservers();     // оповещаем всех об изменении

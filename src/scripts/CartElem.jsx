@@ -1,5 +1,7 @@
 import { API_URL } from "./API.js";
 import { cartStore } from "./store.js";
+import { debounce } from "./debounce.js";
+
 
 
 // товар Корзины: комопнент реакт, вернет верстку
@@ -16,13 +18,13 @@ export const CartElem = (cartProduct) => (  //  cartProduct = {id, image, title,
 
         <input class="cart__counter-input" type="number" min="0" max="99" value={cartProduct.quantity}  
         onInput = {   
-          ({ target }) => { 
-            const cartDeb = debounce(cartStore.postCart({ id: cartProduct.id, quantity: !isNaN(parseInt(target.value)) ? parseInt(target.value) : cartProduct.quantity });
-            target.value = isNaN(parseInt(target.value)) ? parseInt(target.value) : cartProduct.quantity;
-            , 500)
-            
+          debounce(({ target }) => { 
+            cartStore.postCart({
+              id: cartProduct.id, 
+              quantity: !isNaN(parseInt(target.value)) ? parseInt(target.value) : cartProduct.quantity });  
+            target.value = isNaN(parseInt(target.value)) ? parseInt(target.value) : cartProduct.quantity}, 500)
           }
-        } />        {/* onInputсобытие ввода в поле, { target } это <input>, дестуткририровали evt */}
+         />        {/* onInput событие ввода в поле, { target } это <input>, дестуткририровали evt */}
          
         {/* повесили обработчик: */}
         <button onClick = {() => { 
