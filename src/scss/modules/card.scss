@@ -100,6 +100,11 @@
       background-color: $orange;
     }
 
+    // всгда испльзуем focus-visible вместо focus
+    // &:focus-visible {
+    //   background-color: red;
+    // }
+
     &:active {
       background-color: $orange;
     }

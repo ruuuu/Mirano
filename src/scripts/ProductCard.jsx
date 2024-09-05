@@ -6,7 +6,7 @@ import { cartStore } from "./store.js";
 
 
  // как в реакт (компонент jsx)
-export const ProductCard = (product) => {
+export const ProductCard = (product) => { // передать еще значение дтаты  и времени доставки
   
   // для каждого элемента будет вызыватья функция jsx из jsx.js:
   return ( 
@@ -16,7 +16,7 @@ export const ProductCard = (product) => {
           <div class="card__content">
             <h3 class="card__title"> {product.name} </h3>
             <div class="card__footer">
-              <p class="card__date-delivery"> сегодня&nbsp;в&nbsp;14:00 </p>
+              <p class="card__date-delivery"> сегодня&nbsp;в&nbsp;14:00 </p> {/* вставить переанное значение */}
               {/* onMouseEnter- событие наведения(нажатия) мышки: */}
               <button class="card__button"  onMouseEnter={(evt) => {evt.target.textContent = "В Корзину"}}  onMouseLeave={(evt) => {evt.target.innerHTML = `${product.price}&nbsp;P`}}  onClick={() => { cartStore.addProductCart(product.id) }}> {product.price}&nbsp;P </button>
             </div>

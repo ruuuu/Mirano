@@ -45,8 +45,8 @@ export const Order = (totalPrice) => {
           <fieldset class="order__fieldset">
             <legend class="order__legend">Данные заказчика</legend>
             <div class="order__input-group">
-              <input class="order__input" type="text" name="name-buyer" placeholder="Имя" />
-              <input class="order__input" type="tel" name="phone-buyer" placeholder="Телефон" />
+                <input class="order__input" type="text" name="name-buyer" placeholder="Имя" />
+                <input class="order__input" type="tel" name="phone-buyer" placeholder="Телефон" />
             </div>
           </fieldset>
 
@@ -79,9 +79,9 @@ export const Order = (totalPrice) => {
               <input type="hidden" name="delivery-date" value={deliveryDate} />
 
               <div class="order__select-wrapper">
-              {/* событие onBlur сработае при закрытии спсика */}
-                <select class="order__select" name="delivery-time" id="delivery" onFocus={openSelect}  onBlur={closeSelect}>
-                  <option value="9-12">с 9:00 до 12:00</option>
+                                                          {/* либо так вызвать onFocus={ (evt) => openSelect(evt) } */} 
+                <select class="order__select" name="delivery-time" id="delivery" onFocus={openSelect}  onBlur={closeSelect}> {/* событие onBlur сработае при закрытии спсика */} 
+                  <option value="9-12">с 9:00 до 12:00</option>  {/* для кастомного cписка использовать плагин https://choices-js.github.io/Choices/ , ghvbth bcgjkmpdfjbz https://github.com/ruuuu/Uslugus/blob/main/src/modules/choicesController.js */} 
                   <option value="12-15">с 12:00 до 15:00</option>
                   <option value="15-18">с 15:00 до 18:00</option>
                   <option value="18-21">с 18:00 до 21:00</option>
